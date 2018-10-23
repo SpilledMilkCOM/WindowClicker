@@ -31,4 +31,7 @@ You can **try** and you may have some luck in the settings are adjusted correctl
 You can dig into the code to see what the options are.
 The options are so you don't get banned from the game and your friends don't beat you.
 
+I actually **wrote** one of those clicker games a few years ago **[ClickR](https://github.com/SpilledMilkCOM/ClickR)**
+So this app will help me beat me at my own game, AND allow you to **crush** your friends.
+
 A little "white hack" to FREE up your time.
