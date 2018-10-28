@@ -9,6 +9,7 @@ namespace WindowClicker
 {
 	public partial class MainForm : Form
 	{
+		bool _isStarted;
 		DateTime? _lastClickTime;
 		TimeSpan _maxDuration;
 		TimeSpan _minDuration;
@@ -37,6 +38,16 @@ namespace WindowClicker
 
 		private void clickScreen_Click(object sender, EventArgs e)
 		{
+			if (_isStarted)
+			{
+				_isStarted = false;
+				clickScreen.Text = "Click Screen";
+				return;
+			}
+
+			clickScreen.Text = "Cancel";
+			_isStarted = true;
+
 			var x = int.Parse(screenX.Text);
 			var y = int.Parse(screenY.Text);
 			var cMin = int.Parse(clickMin.Text);
@@ -49,6 +60,7 @@ namespace WindowClicker
 			var iterClicksMax = int.Parse(iterationClicksMax.Text);
 			var iterMax = int.Parse(iterationCount.Text);
 			var random = new Random();
+			var timeStarted = DateTime.Now;
 
 			x -= radius;
 			y -= radius;
@@ -56,22 +68,40 @@ namespace WindowClicker
 			progressBar.Minimum = 0;
 			progressBar.Maximum = iterMax;
 
-			for (int iter = 0; iter <= iterMax; iter++)
+			for (int iter = 0; iter <= iterMax && _isStarted; iter++)
 			{
 				var clicksMax = random.Next(iterClicksMin, iterClicksMax);
 				progressBar.Value = iter;
 
-				for (int click = 0; click < clicksMax; click++)
+				if (cMin == 0 && cMin == cMax)
 				{
-					// Randomize the point around the radius.
+					ClickOnPointTool.ClickOnPoint(Handle, new Point(random.Next(x, x + diameter), random.Next(y, y + diameter)), clicksMax);
+				}
+				else
+				{
+					for (int click = 0; click < clicksMax; click++)
+					{
+						// Randomize the point around the radius.
 
-					ClickOnPointTool.ClickOnPoint(Handle, new Point(random.Next(x, x + diameter), random.Next(y, y + diameter)));
+						ClickOnPointTool.ClickOnPoint(Handle, new Point(random.Next(x, x + diameter), random.Next(y, y + diameter)));
 
-					Thread.Sleep(random.Next(cMin, cMax));
+						Thread.Sleep(random.Next(cMin, cMax));
+					}
 				}
 
 				Thread.Sleep(random.Next(wMin, wMax));
+
+				var elapsedMilliseconds = DateTime.Now.Subtract(timeStarted).TotalMilliseconds;
+				var remainingMilliseconds = (double)elapsedMilliseconds / (iter + 1)  * (iterMax - iter);
+
+				elapsedTime.Text = new TimeSpan(0, 0, 0, 0, (int)elapsedMilliseconds).ToString();
+				estimatedRemaining.Text = new TimeSpan(0, 0, 0, 0, (int)remainingMilliseconds).ToString();
+
+				Application.DoEvents();
 			}
+
+			_isStarted = false;
+			clickScreen.Text = "Click Screen";
 		}
 
 		private void screenClickPanel_MouseClick(object sender, MouseEventArgs e)
@@ -80,6 +110,8 @@ namespace WindowClicker
 
 			screenX.Text = screenPoint.X.ToString();
 			screenY.Text = screenPoint.Y.ToString();
+
+			clickScreen.Enabled = true;
 		}
 
 		private void TestClickPanel_MouseClick(object sender, MouseEventArgs e)
@@ -134,7 +166,7 @@ namespace WindowClicker
 			var iterClicksMax = int.Parse(iterationClicksMax.Text);
 			var iterMax = int.Parse(iterationCount.Text);
 
-			var estimatedMilliseconds = iterMax * (wMin + wMax) / 2 + (iterClicksMin + iterClicksMax + cWaitMin + cWaitMax) / 4;
+			var estimatedMilliseconds = iterMax * (wMin + wMax) / 2 + (iterClicksMin + iterClicksMax + cWaitMin + cWaitMax) / 2;
 
 			var duration = new TimeSpan(0, 0, 0, 0, estimatedMilliseconds);
 

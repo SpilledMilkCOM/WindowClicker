@@ -42,7 +42,7 @@ namespace WindowClicker
 
 #pragma warning restore 649
 
-		public static void ClickOnPoint(IntPtr wndHandle, Point clientPoint)
+		public static void ClickOnPoint(IntPtr wndHandle, Point clientPoint, int numberOfClicks = 1)
 		{
 			var oldPos = Cursor.Position;
 
@@ -61,7 +61,18 @@ namespace WindowClicker
 			inputMouseUp.Data.Mouse.Flags = 0x0004; /// left button up
 
 			var inputs = new INPUT[] { inputMouseDown, inputMouseUp };
-			SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(INPUT)));
+
+			if (numberOfClicks > 1)
+			{
+				for (int i = 0; i < numberOfClicks; i++)
+				{
+					SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(INPUT)));
+				}
+			}
+			else
+			{
+				SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(INPUT)));
+			}
 
 			/// return mouse 
 			Cursor.Position = oldPos;
