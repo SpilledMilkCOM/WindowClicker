@@ -66,11 +66,20 @@ namespace WindowClicker
 			y -= radius;
 
 			progressBar.Minimum = 0;
-			progressBar.Maximum = iterMax;
 
-			for (int iter = 0; iter <= iterMax && _isStarted; iter++)
+			if (iterMax > 1)
+			{
+				progressBar.Maximum = iterMax;
+			}
+
+			for (int iter = 1; iter <= iterMax && _isStarted; iter++)
 			{
 				var clicksMax = random.Next(iterClicksMin, iterClicksMax);
+
+				if (iterMax <= 1)
+				{
+					progressBar.Maximum = clicksMax;
+				}
 				progressBar.Value = iter;
 
 				if (cMin == 0 && cMin == cMax)
@@ -79,13 +88,20 @@ namespace WindowClicker
 				}
 				else
 				{
-					for (int click = 0; click < clicksMax; click++)
+					for (int click = 1; click <= clicksMax && _isStarted; click++)
 					{
 						// Randomize the point around the radius.
 
 						ClickOnPointTool.ClickOnPoint(Handle, new Point(random.Next(x, x + diameter), random.Next(y, y + diameter)));
 
 						Thread.Sleep(random.Next(cMin, cMax));
+
+						if (iterMax <= 1)
+						{
+							progressBar.Value = click;
+
+							Application.DoEvents();
+						}
 					}
 				}
 
