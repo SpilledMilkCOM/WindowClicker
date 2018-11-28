@@ -98,7 +98,12 @@ namespace WindowClicker
 
 						if (iterMax <= 1)
 						{
+							var elapsedMS = DateTime.Now.Subtract(timeStarted).TotalMilliseconds;
+
 							progressBar.Value = click;
+
+							elapsedTime.Text = new TimeSpan(0, 0, 0, 0, (int)elapsedMS).ToString();
+							estimatedRemaining.Text = new TimeSpan(0, 0, 0, 0, (int)((double)elapsedMS / (click + 1) * (clicksMax - click))).ToString();
 
 							Application.DoEvents();
 						}
