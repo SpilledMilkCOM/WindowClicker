@@ -52,12 +52,16 @@ namespace WindowClicker
 			var y = int.Parse(screenY.Text);
 			var cMin = int.Parse(clickMin.Text);
 			var cMax = int.Parse(clickMax.Text);
+			var cDetail = 0;
+			var cTotal = 0;
 			var wMin = int.Parse(waitMin.Text);
 			var wMax = int.Parse(waitMax.Text);
 			var radius = int.Parse(clickRadius.Text);
 			var diameter = radius * 2;
 			var iterClicksMin = int.Parse(iterationClicksMin.Text);
 			var iterClicksMax = int.Parse(iterationClicksMax.Text);
+			var iTotal = 0;
+			var duration = 0;
 			var iterMax = int.Parse(iterationCount.Text);
 			var random = new Random();
 			var timeStarted = DateTime.Now;
@@ -75,6 +79,7 @@ namespace WindowClicker
 			for (int iter = 1; iter <= iterMax && _isStarted; iter++)
 			{
 				var clicksMax = random.Next(iterClicksMin, iterClicksMax);
+				iTotal++;
 
 				if (iterMax <= 1)
 				{
@@ -94,7 +99,12 @@ namespace WindowClicker
 
 						ClickOnPointTool.ClickOnPoint(Handle, new Point(random.Next(x, x + diameter), random.Next(y, y + diameter)));
 
-						Thread.Sleep(random.Next(cMin, cMax));
+						duration = random.Next(cMin, cMax);
+
+						Thread.Sleep(duration);
+
+						cDetail += duration;
+						cTotal++;
 
 						if (iterMax <= 1)
 						{
@@ -104,6 +114,8 @@ namespace WindowClicker
 
 							elapsedTime.Text = new TimeSpan(0, 0, 0, 0, (int)elapsedMS).ToString();
 							estimatedRemaining.Text = new TimeSpan(0, 0, 0, 0, (int)((double)elapsedMS / (click + 1) * (clicksMax - click))).ToString();
+							clickDetail.Text = $"{duration} / {cDetail / cTotal}";
+							iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / cTotal}";
 
 							Application.DoEvents();
 						}
@@ -117,6 +129,8 @@ namespace WindowClicker
 
 				elapsedTime.Text = new TimeSpan(0, 0, 0, 0, (int)elapsedMilliseconds).ToString();
 				estimatedRemaining.Text = new TimeSpan(0, 0, 0, 0, (int)remainingMilliseconds).ToString();
+				clickDetail.Text = $"{duration} / {cDetail / cTotal}";
+				iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / cTotal}";
 
 				Application.DoEvents();
 			}

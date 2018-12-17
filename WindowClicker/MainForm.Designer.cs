@@ -59,6 +59,8 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
 			this.elapsedTime = new System.Windows.Forms.Label();
+			this.clickDetail = new System.Windows.Forms.Label();
+			this.iterationClicksDetail = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// mouseX
@@ -167,7 +169,7 @@
 			this.iterationClicksMin.Name = "iterationClicksMin";
 			this.iterationClicksMin.Size = new System.Drawing.Size(56, 20);
 			this.iterationClicksMin.TabIndex = 2;
-			this.iterationClicksMin.Text = "101";
+			this.iterationClicksMin.Text = "250";
 			this.iterationClicksMin.Leave += new System.EventHandler(this.iterationClicksMin_Leave);
 			// 
 			// iterationClicksMax
@@ -176,7 +178,7 @@
 			this.iterationClicksMax.Name = "iterationClicksMax";
 			this.iterationClicksMax.Size = new System.Drawing.Size(56, 20);
 			this.iterationClicksMax.TabIndex = 3;
-			this.iterationClicksMax.Text = "111";
+			this.iterationClicksMax.Text = "300";
 			this.iterationClicksMax.Leave += new System.EventHandler(this.iterationClicksMin_Leave);
 			// 
 			// label1
@@ -244,7 +246,7 @@
 			// testClickPanel
 			// 
 			this.testClickPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.testClickPanel.Location = new System.Drawing.Point(327, 148);
+			this.testClickPanel.Location = new System.Drawing.Point(395, 148);
 			this.testClickPanel.Name = "testClickPanel";
 			this.testClickPanel.Size = new System.Drawing.Size(117, 80);
 			this.testClickPanel.TabIndex = 41;
@@ -255,7 +257,7 @@
 			this.iterationCount.Name = "iterationCount";
 			this.iterationCount.Size = new System.Drawing.Size(56, 20);
 			this.iterationCount.TabIndex = 33;
-			this.iterationCount.Text = "30";
+			this.iterationCount.Text = "1";
 			// 
 			// label8
 			// 
@@ -297,7 +299,7 @@
 			this.clickMax.Name = "clickMax";
 			this.clickMax.Size = new System.Drawing.Size(56, 20);
 			this.clickMax.TabIndex = 35;
-			this.clickMax.Text = "100";
+			this.clickMax.Text = "350";
 			// 
 			// clickMin
 			// 
@@ -305,7 +307,7 @@
 			this.clickMin.Name = "clickMin";
 			this.clickMin.Size = new System.Drawing.Size(56, 20);
 			this.clickMin.TabIndex = 34;
-			this.clickMin.Text = "0";
+			this.clickMin.Text = "250";
 			// 
 			// label6
 			// 
@@ -334,11 +336,31 @@
 			this.elapsedTime.TabIndex = 46;
 			this.elapsedTime.Text = "0:00:0.00";
 			// 
+			// clickDetail
+			// 
+			this.clickDetail.AutoSize = true;
+			this.clickDetail.Location = new System.Drawing.Point(260, 158);
+			this.clickDetail.Name = "clickDetail";
+			this.clickDetail.Size = new System.Drawing.Size(24, 13);
+			this.clickDetail.TabIndex = 47;
+			this.clickDetail.Text = "0/0";
+			// 
+			// iterationClicksDetail
+			// 
+			this.iterationClicksDetail.AutoSize = true;
+			this.iterationClicksDetail.Location = new System.Drawing.Point(260, 132);
+			this.iterationClicksDetail.Name = "iterationClicksDetail";
+			this.iterationClicksDetail.Size = new System.Drawing.Size(24, 13);
+			this.iterationClicksDetail.TabIndex = 48;
+			this.iterationClicksDetail.Text = "0/0";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 284);
+			this.Controls.Add(this.iterationClicksDetail);
+			this.Controls.Add(this.clickDetail);
 			this.Controls.Add(this.elapsedTime);
 			this.Controls.Add(this.label11);
 			this.Controls.Add(this.estimatedRemaining);
@@ -412,5 +434,7 @@
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Label elapsedTime;
+		private System.Windows.Forms.Label clickDetail;
+		private System.Windows.Forms.Label iterationClicksDetail;
 	}
 }
