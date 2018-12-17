@@ -178,7 +178,7 @@ namespace WindowClicker
 					{
 						_minDuration = duration;
 
-						clickMin.Text = _minDuration.Milliseconds.ToString();
+						clickMin.Text = _minDuration.TotalMilliseconds.ToString("N0");
 					}
 
 					if (_lastDurations.Count >= MAX_DURATIONS_SAMPLE)
@@ -188,10 +188,11 @@ namespace WindowClicker
 
 					_lastDurations.Add(duration);
 
-					clickMax.Text = _lastDurations.Max().Milliseconds.ToString();
+					clickMax.Text = _lastDurations.Max().TotalMilliseconds.ToString("N0");
+					clickDetail.Text = $"{duration.TotalMilliseconds:N0} / {_lastDurations.Average(item => item.TotalMilliseconds):N0}";
 				}
 
-				iterationClicksMin.Text = _testClicks.ToString();
+				iterationClicksMin.Text = _testClicks.ToString("N0");
 				iterationClicksMax.Text = iterationClicksMin.Text;
 
 				_testClicks++;
