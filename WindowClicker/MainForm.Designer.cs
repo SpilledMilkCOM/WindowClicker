@@ -250,6 +250,7 @@
 			this.testClickPanel.Name = "testClickPanel";
 			this.testClickPanel.Size = new System.Drawing.Size(117, 80);
 			this.testClickPanel.TabIndex = 41;
+			this.testClickPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TestClickPanel_MouseClick);
 			// 
 			// iterationCount
 			// 

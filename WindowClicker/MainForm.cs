@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -9,9 +10,12 @@ namespace WindowClicker
 {
 	public partial class MainForm : Form
 	{
+		private const int MAX_DURATIONS_SAMPLE = 10;
+
 		bool _isStarted;
 		DateTime? _lastClickTime;
-		TimeSpan _maxDuration;
+		List<TimeSpan> _lastDurations;
+		//TimeSpan _maxDuration;
 		TimeSpan _minDuration;
 		DateTime _startClickTime;
 		int _testClicks;
@@ -20,7 +24,8 @@ namespace WindowClicker
 		{
 			InitializeComponent();
 
-			_maxDuration = TimeSpan.MinValue;
+			//_maxDuration = TimeSpan.MinValue;
+			_lastDurations = new List<TimeSpan>();
 			_minDuration = TimeSpan.MaxValue;
 
 			iterationClicksMin_Leave(null, null);
@@ -116,16 +121,16 @@ namespace WindowClicker
 							estimatedRemaining.Text = new TimeSpan(0, 0, 0, 0, (int)((double)elapsedMS / (click + 1) * (clicksMax - click))).ToString();
 							clickDetail.Text = $"{duration} / {cDetail / cTotal}";
 							iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / cTotal}";
-
-							Application.DoEvents();
 						}
+
+						Application.DoEvents();
 					}
 				}
 
 				Thread.Sleep(random.Next(wMin, wMax));
 
 				var elapsedMilliseconds = DateTime.Now.Subtract(timeStarted).TotalMilliseconds;
-				var remainingMilliseconds = (double)elapsedMilliseconds / (iter + 1)  * (iterMax - iter);
+				var remainingMilliseconds = (double)elapsedMilliseconds / (iter + 1) * (iterMax - iter);
 
 				elapsedTime.Text = new TimeSpan(0, 0, 0, 0, (int)elapsedMilliseconds).ToString();
 				estimatedRemaining.Text = new TimeSpan(0, 0, 0, 0, (int)remainingMilliseconds).ToString();
@@ -161,7 +166,8 @@ namespace WindowClicker
 
 					_startClickTime = now;
 					_testClicks = 0;
-					_maxDuration = TimeSpan.MinValue;
+					//_maxDuration = TimeSpan.MinValue;
+					_lastDurations.Clear();
 					_minDuration = TimeSpan.MaxValue;
 				}
 				else
@@ -175,15 +181,18 @@ namespace WindowClicker
 						clickMin.Text = _minDuration.Milliseconds.ToString();
 					}
 
-					if (duration > _maxDuration)
+					if (_lastDurations.Count >= MAX_DURATIONS_SAMPLE)
 					{
-						_maxDuration = duration;
-
-						clickMax.Text = _maxDuration.Milliseconds.ToString();
+						_lastDurations.RemoveAt(0);
 					}
+
+					_lastDurations.Add(duration);
+
+					clickMax.Text = _lastDurations.Max().Milliseconds.ToString();
 				}
 
-				iterationClicksMax.Text = _testClicks.ToString();
+				iterationClicksMin.Text = _testClicks.ToString();
+				iterationClicksMax.Text = iterationClicksMin.Text;
 
 				_testClicks++;
 			}
