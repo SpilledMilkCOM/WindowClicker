@@ -98,15 +98,17 @@ namespace WindowClicker
 				}
 				else
 				{
+					var stopWatch = new Stopwatch();
+
 					for (int click = 1; click <= clicksMax && _isStarted; click++)
 					{
+						stopWatch.Restart();
+
 						// Randomize the point around the radius.
 
 						ClickOnPointTool.ClickOnPoint(Handle, new Point(random.Next(x, x + diameter), random.Next(y, y + diameter)));
 
 						duration = random.Next(cMin, cMax);
-
-						Thread.Sleep(duration);
 
 						cDetail += duration;
 						cTotal++;
@@ -120,10 +122,21 @@ namespace WindowClicker
 							elapsedTime.Text = new TimeSpan(0, 0, 0, 0, (int)elapsedMS).ToString();
 							estimatedRemaining.Text = new TimeSpan(0, 0, 0, 0, (int)((double)elapsedMS / (click + 1) * (clicksMax - click))).ToString();
 							clickDetail.Text = $"{duration} / {cDetail / cTotal}";
-							iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / cTotal}";
+							iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / clicksMax}";
 						}
 
 						Application.DoEvents();
+
+						// After all the work has been done, then make up the time here.
+
+						stopWatch.Stop();
+
+						var sleepMS = duration - stopWatch.ElapsedMilliseconds;
+
+						if (sleepMS > 0)
+						{
+							Thread.Sleep((int)sleepMS);
+						}
 					}
 				}
 
