@@ -59,13 +59,13 @@ namespace WindowClicker
 			var cMax = int.Parse(clickMax.Text);
 			var cDetail = 0;
 			var cTotal = 0;
+			var progressOffset = 0;
 			var wMin = int.Parse(waitMin.Text);
 			var wMax = int.Parse(waitMax.Text);
 			var radius = int.Parse(clickRadius.Text);
 			var diameter = radius * 2;
 			var iterClicksMin = int.Parse(iterationClicksMin.Text);
 			var iterClicksMax = int.Parse(iterationClicksMax.Text);
-			var iTotal = 0;
 			var duration = 0;
 			var iterMax = int.Parse(iterationCount.Text);
 			var random = new Random();
@@ -75,21 +75,13 @@ namespace WindowClicker
 			y -= radius;
 
 			progressBar.Minimum = 0;
-
-			if (iterMax > 1)
-			{
-				progressBar.Maximum = iterMax;
-			}
+			progressBar.Maximum = iterMax * (iterClicksMin + iterClicksMax) / 2;
 
 			for (int iter = 1; iter <= iterMax && _isStarted; iter++)
 			{
 				var clicksMax = random.Next(iterClicksMin, iterClicksMax);
-				iTotal++;
 
-				if (iterMax <= 1)
-				{
-					progressBar.Maximum = clicksMax;
-				}
+				progressBar.Maximum = progressBar.Maximum - (iterClicksMin + iterClicksMax) / 2 + clicksMax;
 				progressBar.Value = iter;
 
 				if (cMin == 0 && cMin == cMax)
@@ -113,17 +105,14 @@ namespace WindowClicker
 						cDetail += duration;
 						cTotal++;
 
-						if (iterMax <= 1)
-						{
-							var elapsedMS = DateTime.Now.Subtract(timeStarted).TotalMilliseconds;
+						var elapsedMS = DateTime.Now.Subtract(timeStarted).TotalMilliseconds;
 
-							progressBar.Value = click;
+						progressBar.Value = progressOffset + click;
 
-							elapsedTime.Text = new TimeSpan(0, 0, 0, 0, (int)elapsedMS).ToString();
-							estimatedRemaining.Text = new TimeSpan(0, 0, 0, 0, (int)((double)elapsedMS / (click + 1) * (clicksMax - click))).ToString();
-							clickDetail.Text = $"{duration} / {cDetail / cTotal}";
-							iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / clicksMax}";
-						}
+						elapsedTime.Text = new TimeSpan(0, 0, 0, 0, (int)elapsedMS).ToString();
+						estimatedRemaining.Text = new TimeSpan(0, 0, 0, 0, (int)((double)elapsedMS / (progressOffset + click + 1) * ((iterMax - iter) * (iterClicksMin + iterClicksMax) / 2 + clicksMax - click))).ToString();
+						clickDetail.Text = $"{duration} / {cDetail / cTotal}";
+						iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / clicksMax}";
 
 						Application.DoEvents();
 
@@ -142,17 +131,15 @@ namespace WindowClicker
 
 				Thread.Sleep(random.Next(wMin, wMax));
 
-				var elapsedMilliseconds = DateTime.Now.Subtract(timeStarted).TotalMilliseconds;
-				var remainingMilliseconds = (double)elapsedMilliseconds / (iter + 1) * (iterMax - iter);
-
-				elapsedTime.Text = new TimeSpan(0, 0, 0, 0, (int)elapsedMilliseconds).ToString();
-				estimatedRemaining.Text = new TimeSpan(0, 0, 0, 0, (int)remainingMilliseconds).ToString();
 				clickDetail.Text = $"{duration} / {cDetail / cTotal}";
 				iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / cTotal}";
 
 				Application.DoEvents();
+
+				progressOffset += clicksMax;
 			}
 
+			progressBar.Value = 0;		// Turn "off"
 			_isStarted = false;
 			clickScreen.Text = "Click Screen";
 		}
