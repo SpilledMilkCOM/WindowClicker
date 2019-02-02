@@ -61,6 +61,7 @@
 			this.elapsedTime = new System.Windows.Forms.Label();
 			this.clickDetail = new System.Windows.Forms.Label();
 			this.iterationClicksDetail = new System.Windows.Forms.Label();
+			this.waiting = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// mouseX
@@ -138,7 +139,7 @@
 			// clickScreen
 			// 
 			this.clickScreen.Enabled = false;
-			this.clickScreen.Location = new System.Drawing.Point(409, 21);
+			this.clickScreen.Location = new System.Drawing.Point(370, 21);
 			this.clickScreen.Name = "clickScreen";
 			this.clickScreen.Size = new System.Drawing.Size(103, 27);
 			this.clickScreen.TabIndex = 12;
@@ -151,7 +152,7 @@
 			this.progressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.progressBar.Location = new System.Drawing.Point(0, 270);
 			this.progressBar.Name = "progressBar";
-			this.progressBar.Size = new System.Drawing.Size(800, 14);
+			this.progressBar.Size = new System.Drawing.Size(659, 14);
 			this.progressBar.TabIndex = 13;
 			// 
 			// iterationClicksLbl
@@ -201,9 +202,9 @@
 			// screenClickPanel
 			// 
 			this.screenClickPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.screenClickPanel.Location = new System.Drawing.Point(528, 22);
+			this.screenClickPanel.Location = new System.Drawing.Point(479, 21);
 			this.screenClickPanel.Name = "screenClickPanel";
-			this.screenClickPanel.Size = new System.Drawing.Size(252, 228);
+			this.screenClickPanel.Size = new System.Drawing.Size(171, 228);
 			this.screenClickPanel.TabIndex = 27;
 			this.screenClickPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.screenClickPanel_MouseClick);
 			// 
@@ -246,7 +247,7 @@
 			// testClickPanel
 			// 
 			this.testClickPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.testClickPanel.Location = new System.Drawing.Point(395, 148);
+			this.testClickPanel.Location = new System.Drawing.Point(356, 132);
 			this.testClickPanel.Name = "testClickPanel";
 			this.testClickPanel.Size = new System.Drawing.Size(117, 80);
 			this.testClickPanel.TabIndex = 41;
@@ -355,11 +356,21 @@
 			this.iterationClicksDetail.TabIndex = 48;
 			this.iterationClicksDetail.Text = "0/0";
 			// 
+			// waiting
+			// 
+			this.waiting.AutoSize = true;
+			this.waiting.Location = new System.Drawing.Point(298, 236);
+			this.waiting.Name = "waiting";
+			this.waiting.Size = new System.Drawing.Size(40, 13);
+			this.waiting.TabIndex = 49;
+			this.waiting.Text = "waiting";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(800, 284);
+			this.ClientSize = new System.Drawing.Size(659, 284);
+			this.Controls.Add(this.waiting);
 			this.Controls.Add(this.iterationClicksDetail);
 			this.Controls.Add(this.clickDetail);
 			this.Controls.Add(this.elapsedTime);
@@ -437,5 +448,6 @@
 		private System.Windows.Forms.Label elapsedTime;
 		private System.Windows.Forms.Label clickDetail;
 		private System.Windows.Forms.Label iterationClicksDetail;
+		private System.Windows.Forms.Label waiting;
 	}
 }

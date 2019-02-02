@@ -15,7 +15,6 @@ namespace WindowClicker
 		bool _isStarted;
 		DateTime? _lastClickTime;
 		List<TimeSpan> _lastDurations;
-		//TimeSpan _maxDuration;
 		TimeSpan _minDuration;
 		DateTime _startClickTime;
 		int _testClicks;
@@ -120,16 +119,14 @@ namespace WindowClicker
 
 						stopWatch.Stop();
 
-						var sleepMS = duration - stopWatch.ElapsedMilliseconds;
-
-						if (sleepMS > 0)
-						{
-							Thread.Sleep((int)sleepMS);
-						}
+						WaitWhileHandlingEvents(duration - stopWatch.ElapsedMilliseconds);
 					}
 				}
 
-				Thread.Sleep(random.Next(wMin, wMax));
+				if (iter != iterMax)
+				{
+					WaitWhileHandlingEvents(random.Next(wMin, wMax));
+				}
 
 				clickDetail.Text = $"{duration} / {cDetail / cTotal}";
 				iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / cTotal}";
@@ -139,7 +136,7 @@ namespace WindowClicker
 				progressOffset += clicksMax;
 			}
 
-			progressBar.Value = 0;		// Turn "off"
+			progressBar.Value = 0;      // Turn "off"
 			_isStarted = false;
 			clickScreen.Text = "Click Screen";
 		}
@@ -216,6 +213,31 @@ namespace WindowClicker
 			var duration = new TimeSpan(0, 0, 0, 0, estimatedMilliseconds);
 
 			estimatedTime.Text = duration.ToString();
+		}
+
+		private void WaitWhileHandlingEvents(long milliseconds)
+		{
+			const int WAIT_DURATION = 500;
+
+			while (milliseconds > 0 && _isStarted)
+			{
+				if (milliseconds < WAIT_DURATION)
+				{
+					Thread.Sleep((int)milliseconds);
+				}
+				else
+				{
+					waiting.Text = milliseconds.ToString();
+
+					Application.DoEvents();
+
+					Thread.Sleep(WAIT_DURATION);
+				}
+
+				milliseconds -= WAIT_DURATION;
+			}
+
+			waiting.Text = string.Empty;
 		}
 	}
 }
