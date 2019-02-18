@@ -276,7 +276,7 @@
 			this.waitMax.Name = "waitMax";
 			this.waitMax.Size = new System.Drawing.Size(56, 20);
 			this.waitMax.TabIndex = 37;
-			this.waitMax.Text = "750";
+			this.waitMax.Text = "10000";
 			// 
 			// waitMin
 			// 
@@ -284,7 +284,7 @@
 			this.waitMin.Name = "waitMin";
 			this.waitMin.Size = new System.Drawing.Size(56, 20);
 			this.waitMin.TabIndex = 36;
-			this.waitMin.Text = "500";
+			this.waitMin.Text = "5000";
 			// 
 			// label7
 			// 
@@ -301,7 +301,7 @@
 			this.clickMax.Name = "clickMax";
 			this.clickMax.Size = new System.Drawing.Size(56, 20);
 			this.clickMax.TabIndex = 35;
-			this.clickMax.Text = "350";
+			this.clickMax.Text = "200";
 			// 
 			// clickMin
 			// 
@@ -309,7 +309,7 @@
 			this.clickMin.Name = "clickMin";
 			this.clickMin.Size = new System.Drawing.Size(56, 20);
 			this.clickMin.TabIndex = 34;
-			this.clickMin.Text = "250";
+			this.clickMin.Text = "120";
 			// 
 			// label6
 			// 

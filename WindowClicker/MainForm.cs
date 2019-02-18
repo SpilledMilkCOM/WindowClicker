@@ -11,6 +11,7 @@ namespace WindowClicker
 	public partial class MainForm : Form
 	{
 		private const int MAX_DURATIONS_SAMPLE = 10;
+		private const string TIMESPAN_FORMAT = "hh\\:mm\\:ss";
 
 		bool _isStarted;
 		DateTime? _lastClickTime;
@@ -89,7 +90,10 @@ namespace WindowClicker
 				}
 				else
 				{
+					var iterStopWatch = new Stopwatch();
 					var stopWatch = new Stopwatch();
+
+					iterStopWatch.Start();
 
 					for (int click = 1; click <= clicksMax && _isStarted; click++)
 					{
@@ -108,10 +112,18 @@ namespace WindowClicker
 
 						progressBar.Value = progressOffset + click;
 
-						elapsedTime.Text = new TimeSpan(0, 0, 0, 0, (int)elapsedMS).ToString();
-						estimatedRemaining.Text = new TimeSpan(0, 0, 0, 0, (int)((double)elapsedMS / (progressOffset + click + 1) * ((iterMax - iter) * (iterClicksMin + iterClicksMax) / 2 + clicksMax - click))).ToString();
+						elapsedTime.Text = new TimeSpan(0, 0, 0, 0, (int)elapsedMS).ToString(TIMESPAN_FORMAT);
+						estimatedRemaining.Text = new TimeSpan(0, 0, 0, 0, (int)((double)elapsedMS / (progressOffset + click + 1) * ((iterMax - iter) * (iterClicksMin + iterClicksMax) / 2 + clicksMax - click))).ToString(TIMESPAN_FORMAT);
 						clickDetail.Text = $"{duration} / {cDetail / cTotal}";
 						iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / clicksMax}";
+
+						if (iterMax > 1)
+						{
+							// Show progress for each iteration.
+							waiting.BackColor = Color.LightGreen;
+							//waiting.Text = (clicksMax - click).ToString();
+							waiting.Text = new TimeSpan(0, 0, 0, 0, (int)(iterStopWatch.ElapsedMilliseconds / click * (clicksMax - click))).ToString(TIMESPAN_FORMAT);
+						}
 
 						Application.DoEvents();
 
@@ -212,7 +224,7 @@ namespace WindowClicker
 
 			var duration = new TimeSpan(0, 0, 0, 0, estimatedMilliseconds);
 
-			estimatedTime.Text = duration.ToString();
+			estimatedTime.Text = duration.ToString(TIMESPAN_FORMAT);
 		}
 
 		private void WaitWhileHandlingEvents(long milliseconds)
@@ -227,7 +239,8 @@ namespace WindowClicker
 				}
 				else
 				{
-					waiting.Text = milliseconds.ToString();
+					waiting.BackColor = Color.Pink;
+					waiting.Text = new TimeSpan(0, 0, 0, 0, (int)milliseconds).ToString(TIMESPAN_FORMAT);
 
 					Application.DoEvents();
 
