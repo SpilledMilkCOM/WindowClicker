@@ -119,10 +119,14 @@ namespace WindowClicker
 
 						if (iterMax > 1)
 						{
-							// Show progress for each iteration.
-							waiting.BackColor = Color.LightGreen;
-							//waiting.Text = (clicksMax - click).ToString();
-							waiting.Text = new TimeSpan(0, 0, 0, 0, (int)(iterStopWatch.ElapsedMilliseconds / click * (clicksMax - click))).ToString(TIMESPAN_FORMAT);
+							var waitingText = new TimeSpan(0, 0, 0, 0, (int)(iterStopWatch.ElapsedMilliseconds / click * (clicksMax - click))).ToString(TIMESPAN_FORMAT);
+
+							if (waitingText != waiting.Text)
+							{
+								// Show progress for each iteration.
+								waiting.BackColor = Color.LightGreen;
+								waiting.Text = waitingText;
+							}
 						}
 
 						Application.DoEvents();
@@ -147,6 +151,8 @@ namespace WindowClicker
 
 				progressOffset += clicksMax;
 			}
+
+			waiting.Text = string.Empty;
 
 			progressBar.Value = 0;      // Turn "off"
 			_isStarted = false;
@@ -250,7 +256,7 @@ namespace WindowClicker
 				milliseconds -= WAIT_DURATION;
 			}
 
-			waiting.Text = string.Empty;
+			//waiting.Text = string.Empty;
 		}
 	}
 }
