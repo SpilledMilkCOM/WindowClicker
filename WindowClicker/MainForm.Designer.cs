@@ -28,10 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.mouseX = new System.Windows.Forms.Label();
-			this.mouseY = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.screenY = new System.Windows.Forms.Label();
@@ -62,48 +58,18 @@
 			this.clickDetail = new System.Windows.Forms.Label();
 			this.iterationClicksDetail = new System.Windows.Forms.Label();
 			this.waiting = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.totalClicks = new System.Windows.Forms.Label();
+			this.addAction = new System.Windows.Forms.Button();
+			this.actionList = new System.Windows.Forms.ListBox();
+			this.useActions = new System.Windows.Forms.CheckBox();
+			this.screenClickPanel.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// mouseX
-			// 
-			this.mouseX.AutoSize = true;
-			this.mouseX.Location = new System.Drawing.Point(111, 21);
-			this.mouseX.Name = "mouseX";
-			this.mouseX.Size = new System.Drawing.Size(45, 13);
-			this.mouseX.TabIndex = 1;
-			this.mouseX.Text = "mouseX";
-			// 
-			// mouseY
-			// 
-			this.mouseY.AutoSize = true;
-			this.mouseY.Location = new System.Drawing.Point(111, 35);
-			this.mouseY.Name = "mouseY";
-			this.mouseY.Size = new System.Drawing.Size(45, 13);
-			this.mouseY.TabIndex = 2;
-			this.mouseY.Text = "mouseY";
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(27, 21);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(82, 13);
-			this.label2.TabIndex = 3;
-			this.label2.Text = "Mouse Move X:";
-			// 
-			// label3
-			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(27, 35);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(82, 13);
-			this.label3.TabIndex = 4;
-			this.label3.Text = "Mouse Move Y:";
 			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(205, 35);
+			this.label4.Location = new System.Drawing.Point(18, 20);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(80, 13);
 			this.label4.TabIndex = 8;
@@ -112,7 +78,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(205, 21);
+			this.label5.Location = new System.Drawing.Point(18, 6);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(80, 13);
 			this.label5.TabIndex = 7;
@@ -121,7 +87,7 @@
 			// screenY
 			// 
 			this.screenY.AutoSize = true;
-			this.screenY.Location = new System.Drawing.Point(291, 35);
+			this.screenY.Location = new System.Drawing.Point(104, 20);
 			this.screenY.Name = "screenY";
 			this.screenY.Size = new System.Drawing.Size(46, 13);
 			this.screenY.TabIndex = 6;
@@ -130,7 +96,7 @@
 			// screenX
 			// 
 			this.screenX.AutoSize = true;
-			this.screenX.Location = new System.Drawing.Point(291, 21);
+			this.screenX.Location = new System.Drawing.Point(104, 6);
 			this.screenX.Name = "screenX";
 			this.screenX.Size = new System.Drawing.Size(46, 13);
 			this.screenX.TabIndex = 5;
@@ -139,7 +105,7 @@
 			// clickScreen
 			// 
 			this.clickScreen.Enabled = false;
-			this.clickScreen.Location = new System.Drawing.Point(370, 21);
+			this.clickScreen.Location = new System.Drawing.Point(446, 193);
 			this.clickScreen.Name = "clickScreen";
 			this.clickScreen.Size = new System.Drawing.Size(103, 27);
 			this.clickScreen.TabIndex = 12;
@@ -150,15 +116,15 @@
 			// progressBar
 			// 
 			this.progressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.progressBar.Location = new System.Drawing.Point(0, 270);
+			this.progressBar.Location = new System.Drawing.Point(0, 394);
 			this.progressBar.Name = "progressBar";
-			this.progressBar.Size = new System.Drawing.Size(659, 14);
+			this.progressBar.Size = new System.Drawing.Size(607, 14);
 			this.progressBar.TabIndex = 13;
 			// 
 			// iterationClicksLbl
 			// 
 			this.iterationClicksLbl.AutoSize = true;
-			this.iterationClicksLbl.Location = new System.Drawing.Point(90, 132);
+			this.iterationClicksLbl.Location = new System.Drawing.Point(78, 68);
 			this.iterationClicksLbl.Name = "iterationClicksLbl";
 			this.iterationClicksLbl.Size = new System.Drawing.Size(38, 13);
 			this.iterationClicksLbl.TabIndex = 22;
@@ -166,7 +132,7 @@
 			// 
 			// iterationClicksMin
 			// 
-			this.iterationClicksMin.Location = new System.Drawing.Point(134, 129);
+			this.iterationClicksMin.Location = new System.Drawing.Point(122, 65);
 			this.iterationClicksMin.Name = "iterationClicksMin";
 			this.iterationClicksMin.Size = new System.Drawing.Size(56, 20);
 			this.iterationClicksMin.TabIndex = 2;
@@ -175,7 +141,7 @@
 			// 
 			// iterationClicksMax
 			// 
-			this.iterationClicksMax.Location = new System.Drawing.Point(198, 129);
+			this.iterationClicksMax.Location = new System.Drawing.Point(186, 65);
 			this.iterationClicksMax.Name = "iterationClicksMax";
 			this.iterationClicksMax.Size = new System.Drawing.Size(56, 20);
 			this.iterationClicksMax.TabIndex = 3;
@@ -185,7 +151,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(216, 57);
+			this.label1.Location = new System.Drawing.Point(286, 126);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(69, 13);
 			this.label1.TabIndex = 25;
@@ -193,7 +159,7 @@
 			// 
 			// clickRadius
 			// 
-			this.clickRadius.Location = new System.Drawing.Point(291, 54);
+			this.clickRadius.Location = new System.Drawing.Point(361, 123);
 			this.clickRadius.Name = "clickRadius";
 			this.clickRadius.Size = new System.Drawing.Size(56, 20);
 			this.clickRadius.TabIndex = 1;
@@ -202,16 +168,20 @@
 			// screenClickPanel
 			// 
 			this.screenClickPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.screenClickPanel.Location = new System.Drawing.Point(479, 21);
+			this.screenClickPanel.Controls.Add(this.label5);
+			this.screenClickPanel.Controls.Add(this.screenX);
+			this.screenClickPanel.Controls.Add(this.screenY);
+			this.screenClickPanel.Controls.Add(this.label4);
+			this.screenClickPanel.Location = new System.Drawing.Point(424, 18);
 			this.screenClickPanel.Name = "screenClickPanel";
-			this.screenClickPanel.Size = new System.Drawing.Size(171, 228);
+			this.screenClickPanel.Size = new System.Drawing.Size(171, 108);
 			this.screenClickPanel.TabIndex = 27;
 			this.screenClickPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.screenClickPanel_MouseClick);
 			// 
 			// label10
 			// 
 			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(15, 237);
+			this.label10.Location = new System.Drawing.Point(3, 173);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(109, 13);
 			this.label10.TabIndex = 31;
@@ -220,7 +190,7 @@
 			// estimatedRemaining
 			// 
 			this.estimatedRemaining.AutoSize = true;
-			this.estimatedRemaining.Location = new System.Drawing.Point(131, 237);
+			this.estimatedRemaining.Location = new System.Drawing.Point(119, 173);
 			this.estimatedRemaining.Name = "estimatedRemaining";
 			this.estimatedRemaining.Size = new System.Drawing.Size(102, 13);
 			this.estimatedRemaining.TabIndex = 44;
@@ -229,7 +199,7 @@
 			// estimatedTime
 			// 
 			this.estimatedTime.AutoSize = true;
-			this.estimatedTime.Location = new System.Drawing.Point(131, 190);
+			this.estimatedTime.Location = new System.Drawing.Point(119, 126);
 			this.estimatedTime.Name = "estimatedTime";
 			this.estimatedTime.Size = new System.Drawing.Size(75, 13);
 			this.estimatedTime.TabIndex = 43;
@@ -238,7 +208,7 @@
 			// label9
 			// 
 			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(42, 190);
+			this.label9.Location = new System.Drawing.Point(30, 126);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(82, 13);
 			this.label9.TabIndex = 42;
@@ -247,15 +217,15 @@
 			// testClickPanel
 			// 
 			this.testClickPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.testClickPanel.Location = new System.Drawing.Point(356, 132);
+			this.testClickPanel.Location = new System.Drawing.Point(424, 132);
 			this.testClickPanel.Name = "testClickPanel";
-			this.testClickPanel.Size = new System.Drawing.Size(117, 80);
+			this.testClickPanel.Size = new System.Drawing.Size(171, 52);
 			this.testClickPanel.TabIndex = 41;
 			this.testClickPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TestClickPanel_MouseClick);
 			// 
 			// iterationCount
 			// 
-			this.iterationCount.Location = new System.Drawing.Point(86, 94);
+			this.iterationCount.Location = new System.Drawing.Point(72, 21);
 			this.iterationCount.Name = "iterationCount";
 			this.iterationCount.Size = new System.Drawing.Size(56, 20);
 			this.iterationCount.TabIndex = 33;
@@ -264,7 +234,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(27, 94);
+			this.label8.Location = new System.Drawing.Point(13, 21);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(53, 13);
 			this.label8.TabIndex = 40;
@@ -272,7 +242,7 @@
 			// 
 			// waitMax
 			// 
-			this.waitMax.Location = new System.Drawing.Point(301, 94);
+			this.waitMax.Location = new System.Drawing.Point(280, 21);
 			this.waitMax.Name = "waitMax";
 			this.waitMax.Size = new System.Drawing.Size(56, 20);
 			this.waitMax.TabIndex = 37;
@@ -280,7 +250,7 @@
 			// 
 			// waitMin
 			// 
-			this.waitMin.Location = new System.Drawing.Point(239, 94);
+			this.waitMin.Location = new System.Drawing.Point(218, 21);
 			this.waitMin.Name = "waitMin";
 			this.waitMin.Size = new System.Drawing.Size(56, 20);
 			this.waitMin.TabIndex = 36;
@@ -289,7 +259,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(166, 97);
+			this.label7.Location = new System.Drawing.Point(145, 24);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(67, 13);
 			this.label7.TabIndex = 39;
@@ -297,7 +267,7 @@
 			// 
 			// clickMax
 			// 
-			this.clickMax.Location = new System.Drawing.Point(198, 155);
+			this.clickMax.Location = new System.Drawing.Point(186, 91);
 			this.clickMax.Name = "clickMax";
 			this.clickMax.Size = new System.Drawing.Size(56, 20);
 			this.clickMax.TabIndex = 35;
@@ -305,7 +275,7 @@
 			// 
 			// clickMin
 			// 
-			this.clickMin.Location = new System.Drawing.Point(134, 155);
+			this.clickMin.Location = new System.Drawing.Point(122, 91);
 			this.clickMin.Name = "clickMin";
 			this.clickMin.Size = new System.Drawing.Size(56, 20);
 			this.clickMin.TabIndex = 34;
@@ -314,7 +284,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(60, 158);
+			this.label6.Location = new System.Drawing.Point(48, 94);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(68, 13);
 			this.label6.TabIndex = 38;
@@ -323,7 +293,7 @@
 			// label11
 			// 
 			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(50, 215);
+			this.label11.Location = new System.Drawing.Point(38, 151);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(74, 13);
 			this.label11.TabIndex = 45;
@@ -332,7 +302,7 @@
 			// elapsedTime
 			// 
 			this.elapsedTime.AutoSize = true;
-			this.elapsedTime.Location = new System.Drawing.Point(131, 215);
+			this.elapsedTime.Location = new System.Drawing.Point(119, 151);
 			this.elapsedTime.Name = "elapsedTime";
 			this.elapsedTime.Size = new System.Drawing.Size(52, 13);
 			this.elapsedTime.TabIndex = 46;
@@ -341,7 +311,7 @@
 			// clickDetail
 			// 
 			this.clickDetail.AutoSize = true;
-			this.clickDetail.Location = new System.Drawing.Point(260, 158);
+			this.clickDetail.Location = new System.Drawing.Point(248, 94);
 			this.clickDetail.Name = "clickDetail";
 			this.clickDetail.Size = new System.Drawing.Size(24, 13);
 			this.clickDetail.TabIndex = 47;
@@ -350,7 +320,7 @@
 			// iterationClicksDetail
 			// 
 			this.iterationClicksDetail.AutoSize = true;
-			this.iterationClicksDetail.Location = new System.Drawing.Point(260, 132);
+			this.iterationClicksDetail.Location = new System.Drawing.Point(248, 68);
 			this.iterationClicksDetail.Name = "iterationClicksDetail";
 			this.iterationClicksDetail.Size = new System.Drawing.Size(24, 13);
 			this.iterationClicksDetail.TabIndex = 48;
@@ -359,17 +329,67 @@
 			// waiting
 			// 
 			this.waiting.AutoSize = true;
-			this.waiting.Location = new System.Drawing.Point(298, 236);
+			this.waiting.Location = new System.Drawing.Point(286, 172);
 			this.waiting.Name = "waiting";
 			this.waiting.Size = new System.Drawing.Size(40, 13);
 			this.waiting.TabIndex = 49;
 			this.waiting.Text = "waiting";
 			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(307, 68);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(34, 13);
+			this.label2.TabIndex = 50;
+			this.label2.Text = "Total:";
+			// 
+			// totalClicks
+			// 
+			this.totalClicks.AutoSize = true;
+			this.totalClicks.Location = new System.Drawing.Point(347, 68);
+			this.totalClicks.Name = "totalClicks";
+			this.totalClicks.Size = new System.Drawing.Size(0, 13);
+			this.totalClicks.TabIndex = 51;
+			// 
+			// addAction
+			// 
+			this.addAction.Location = new System.Drawing.Point(437, 259);
+			this.addAction.Name = "addAction";
+			this.addAction.Size = new System.Drawing.Size(53, 23);
+			this.addAction.TabIndex = 53;
+			this.addAction.Text = "Add";
+			this.addAction.UseVisualStyleBackColor = true;
+			this.addAction.Click += new System.EventHandler(this.addAction_Click);
+			// 
+			// actionList
+			// 
+			this.actionList.FormattingEnabled = true;
+			this.actionList.Location = new System.Drawing.Point(16, 205);
+			this.actionList.Name = "actionList";
+			this.actionList.Size = new System.Drawing.Size(401, 173);
+			this.actionList.TabIndex = 52;
+			// 
+			// useActions
+			// 
+			this.useActions.AutoSize = true;
+			this.useActions.Location = new System.Drawing.Point(437, 300);
+			this.useActions.Name = "useActions";
+			this.useActions.Size = new System.Drawing.Size(83, 17);
+			this.useActions.TabIndex = 54;
+			this.useActions.Text = "Use Actions";
+			this.useActions.UseVisualStyleBackColor = true;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(659, 284);
+			this.ClientSize = new System.Drawing.Size(607, 408);
+			this.Controls.Add(this.useActions);
+			this.Controls.Add(this.addAction);
+			this.Controls.Add(this.actionList);
+			this.Controls.Add(this.totalClicks);
+			this.Controls.Add(this.label2);
 			this.Controls.Add(this.waiting);
 			this.Controls.Add(this.iterationClicksDetail);
 			this.Controls.Add(this.clickDetail);
@@ -396,29 +416,18 @@
 			this.Controls.Add(this.iterationClicksLbl);
 			this.Controls.Add(this.progressBar);
 			this.Controls.Add(this.clickScreen);
-			this.Controls.Add(this.label4);
-			this.Controls.Add(this.label5);
-			this.Controls.Add(this.screenY);
-			this.Controls.Add(this.screenX);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.mouseY);
-			this.Controls.Add(this.mouseX);
 			this.Name = "MainForm";
 			this.Opacity = 0.8D;
 			this.Text = "Window Clicker";
 			this.Load += new System.EventHandler(this.MainForm_Load);
-			this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseMove);
+			this.screenClickPanel.ResumeLayout(false);
+			this.screenClickPanel.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
 		}
 
 		#endregion
-		private System.Windows.Forms.Label mouseX;
-		private System.Windows.Forms.Label mouseY;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Label screenY;
@@ -449,5 +458,10 @@
 		private System.Windows.Forms.Label clickDetail;
 		private System.Windows.Forms.Label iterationClicksDetail;
 		private System.Windows.Forms.Label waiting;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label totalClicks;
+		private System.Windows.Forms.Button addAction;
+		private System.Windows.Forms.ListBox actionList;
+		private System.Windows.Forms.CheckBox useActions;
 	}
 }
