@@ -238,7 +238,7 @@ namespace WindowClicker
 			var cDetail = 0;
 			var cTotal = 0;
 			var progressOffset = 0;
-			var wMin = action.DelayRange.Min;
+			var wMin = action.DelayRange.Min;		// Only use delay if there is an action after this one.
 			var wMax = action.DelayRange.Max;
 			var radius = action.ClickRadius;
 			var diameter = radius * 2;
@@ -252,93 +252,67 @@ namespace WindowClicker
 			x -= radius;
 			y -= radius;
 
-			progressBar.Minimum = 0;
-			progressBar.Maximum = iterMax * (iterClicksMin + iterClicksMax) / 2;
+			var clicksMax = random.Next(iterClicksMin, iterClicksMax);
 
-			for (int iter = 1; iter <= iterMax && _isStarted; iter++)
+			if (cMin == 0 && cMin == cMax)
 			{
-				var clicksMax = random.Next(iterClicksMin, iterClicksMax);
+				ClickOnPointTool.ClickOnPoint(Handle, new Point(random.Next(x, x + diameter), random.Next(y, y + diameter)), clicksMax);
+			}
+			else
+			{
+				var iterStopWatch = new Stopwatch();
+				var stopWatch = new Stopwatch();
 
-				progressBar.Maximum = progressBar.Maximum - (iterClicksMin + iterClicksMax) / 2 + clicksMax;
-				progressBar.Value = iter;
+				iterStopWatch.Start();
 
-				if (cMin == 0 && cMin == cMax)
+				for (int click = 1; click <= clicksMax && _isStarted; click++)
 				{
-					ClickOnPointTool.ClickOnPoint(Handle, new Point(random.Next(x, x + diameter), random.Next(y, y + diameter)), clicksMax);
-				}
-				else
-				{
-					var iterStopWatch = new Stopwatch();
-					var stopWatch = new Stopwatch();
+					stopWatch.Restart();
 
-					iterStopWatch.Start();
+					// Randomize the point around the radius.
 
-					for (int click = 1; click <= clicksMax && _isStarted; click++)
+					ClickOnPointTool.ClickOnPoint(Handle, new Point(random.Next(x, x + diameter), random.Next(y, y + diameter)));
+
+					duration = random.Next(cMin, cMax);
+
+					cDetail += duration;
+					cTotal++;
+
+					var elapsedMS = DateTime.Now.Subtract(timeStarted).TotalMilliseconds;
+
+					progressBar.Value = progressOffset + click;
+
+					elapsedTime.Text = new TimeSpan(0, 0, 0, 0, (int)elapsedMS).ToString(TIMESPAN_FORMAT);
+					estimatedRemaining.Text = new TimeSpan(0, 0, 0, 0, (int)((double)elapsedMS / (progressOffset + click + 1) * ((iterMax - iter) * (iterClicksMin + iterClicksMax) / 2 + clicksMax - click))).ToString(TIMESPAN_FORMAT);
+					clickDetail.Text = $"{duration} / {cDetail / cTotal}";
+					iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / clicksMax}";
+
+					if (iterMax > 1)
 					{
-						stopWatch.Restart();
+						var waitingText = new TimeSpan(0, 0, 0, 0, (int)(iterStopWatch.ElapsedMilliseconds / click * (clicksMax - click))).ToString(TIMESPAN_FORMAT);
 
-						// Randomize the point around the radius.
-
-						ClickOnPointTool.ClickOnPoint(Handle, new Point(random.Next(x, x + diameter), random.Next(y, y + diameter)));
-
-						duration = random.Next(cMin, cMax);
-
-						cDetail += duration;
-						cTotal++;
-
-						var elapsedMS = DateTime.Now.Subtract(timeStarted).TotalMilliseconds;
-
-						progressBar.Value = progressOffset + click;
-
-						elapsedTime.Text = new TimeSpan(0, 0, 0, 0, (int)elapsedMS).ToString(TIMESPAN_FORMAT);
-						estimatedRemaining.Text = new TimeSpan(0, 0, 0, 0, (int)((double)elapsedMS / (progressOffset + click + 1) * ((iterMax - iter) * (iterClicksMin + iterClicksMax) / 2 + clicksMax - click))).ToString(TIMESPAN_FORMAT);
-						clickDetail.Text = $"{duration} / {cDetail / cTotal}";
-						iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / clicksMax}";
-
-						if (iterMax > 1)
+						if (waitingText != waiting.Text)
 						{
-							var waitingText = new TimeSpan(0, 0, 0, 0, (int)(iterStopWatch.ElapsedMilliseconds / click * (clicksMax - click))).ToString(TIMESPAN_FORMAT);
-
-							if (waitingText != waiting.Text)
-							{
-								// Show progress for each iteration.
-								waiting.BackColor = Color.LightGreen;
-								waiting.Text = waitingText;
-							}
+							// Show progress for each iteration.
+							waiting.BackColor = Color.LightGreen;
+							waiting.Text = waitingText;
 						}
-
-						Application.DoEvents();
-
-						// After all the work has been done, then make up the time here.
-
-						stopWatch.Stop();
-
-						totalClicks.Text = cTotal.ToString();
-
-						WaitWhileHandlingEvents(duration - stopWatch.ElapsedMilliseconds);
 					}
+
+					Application.DoEvents();
+
+					// After all the work has been done, then make up the time here.
+
+					stopWatch.Stop();
+
+					totalClicks.Text = cTotal.ToString();
+
+					WaitWhileHandlingEvents(duration - stopWatch.ElapsedMilliseconds);
 				}
-
-				if (iter != iterMax)
-				{
-					// Wait between iterations
-
-					WaitWhileHandlingEvents(random.Next(wMin, wMax));
-				}
-
-				clickDetail.Text = $"{duration} / {cDetail / cTotal}";
-				iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / cTotal}";
-
-				Application.DoEvents();
-
-				progressOffset += clicksMax;
 			}
 
-			waiting.Text = string.Empty;
-
-			progressBar.Value = 0;      // Turn "off"
-			_isStarted = false;
-			clickScreen.Text = "Click Screen";
+			clickDetail.Text = $"{duration} / {cDetail / cTotal}";
+			iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / cTotal}";
 		}
 
 		private void TestClickPanel_MouseClick(object sender, MouseEventArgs e)
