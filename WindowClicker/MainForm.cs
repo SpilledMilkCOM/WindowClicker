@@ -20,7 +20,6 @@ namespace WindowClicker
 		DateTime? _lastClickTime;
 		List<TimeSpan> _lastDurations;
 		TimeSpan _minDuration;
-		List<ProcessAction> _actions;
 		DateTime _startClickTime;
 		int _testClicks;
 
@@ -28,8 +27,6 @@ namespace WindowClicker
 		{
 			InitializeComponent();
 
-			_actions = new List<ProcessAction>();
-			//_maxDuration = TimeSpan.MinValue;
 			_lastDurations = new List<TimeSpan>();
 			_minDuration = TimeSpan.MaxValue;
 
@@ -58,16 +55,16 @@ namespace WindowClicker
 
 				using (var fileStream = File.OpenRead(cOpenFileDialog.FileName))
 				{
-					_actions = serializer.ReadObject(fileStream) as List<ProcessAction>;
+					var actions = serializer.ReadObject(fileStream) as List<ProcessAction>;
 
-					if (_actions == null)
+					if (actions == null)
 					{
-						_actions = new List<ProcessAction>();
+						actions = new List<ProcessAction>();
 					}
 					else
 					{
 						cActionList.Items.Clear();
-						_actions.ForEach(item => cActionList.Items.Add(item));
+						actions.ForEach(item => cActionList.Items.Add(item));
 					}
 				}
 			}
@@ -85,7 +82,14 @@ namespace WindowClicker
 
 				using (var fileStream = File.OpenWrite(cSaveFileDialog.FileName))
 				{
-					serializer.WriteObject(fileStream, _actions);
+					var actions = new List<ProcessAction>();
+
+					foreach (ProcessAction item in cActionList.Items)
+					{
+						actions.Add(item);
+					}
+
+					serializer.WriteObject(fileStream, actions);
 				}
 			}
 		}
@@ -101,7 +105,7 @@ namespace WindowClicker
 				// Fill in fields based on the selcted action.
 				// This is what we had to do BEFORE MVVM magic.
 
-				var action = _actions[cActionList.SelectedIndex];
+				var action = cActionList.SelectedItem as ProcessAction;
 
 				cClickRadius.Text = action.ClickRadius.ToString();
 
@@ -125,10 +129,6 @@ namespace WindowClicker
 
 			if (action != null)
 			{
-				// TODO: Possibly don't need this list and just store object in the action list.
-
-				_actions.Add(action);
-
 				cActionList.Items.Add(action);
 
 				cUseActions.Enabled = true;
@@ -145,8 +145,6 @@ namespace WindowClicker
 				// Replace the selected action.
 
 				var selectedIndex = cActionList.SelectedIndex;
-
-				_actions[selectedIndex] = action;
 
 				cActionList.Items.RemoveAt(selectedIndex);
 				cActionList.Items.Insert(selectedIndex, action);
@@ -191,7 +189,7 @@ namespace WindowClicker
 				{
 					var selectedIndex = 0;
 
-					foreach (var action in _actions)
+					foreach (ProcessAction action in cActionList.Items)
 					{
 						cActionList.SelectedIndex = selectedIndex++;
 
