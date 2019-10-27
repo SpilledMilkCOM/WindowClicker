@@ -95,6 +95,15 @@ namespace WindowClicker
 
 			for (int iter = 1; iter <= iterMax && _isStarted; iter++)
 			{
+				if (useActions.Checked)
+				{
+
+				}
+				else
+				{
+
+				}
+
 				var clicksMax = random.Next(iterClicksMin, iterClicksMax);
 
 				progressBar.Maximum = progressBar.Maximum - (iterClicksMin + iterClicksMax) / 2 + clicksMax;
@@ -229,7 +238,7 @@ namespace WindowClicker
 			return result;
 		}
 
-		private void ProcessAction(ProcessAction action)
+		private void ProcessAction(ProcessAction action, int iter)
 		{
 			var x = action.Location.X;
 			var y = action.Location.Y;

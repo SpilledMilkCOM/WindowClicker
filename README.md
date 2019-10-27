@@ -35,3 +35,6 @@ I actually **wrote** one of those clicker games a few years ago **[ClickR](https
 So this app will help me beat me at my own game, AND allow you to **crush** your friends.
 
 A little "white hack" to FREE up your time.
+
+## WindowClicked  (Test App)
+This project will display where the clicker has clicked.  This helps for multiple actions and tweaking the clicker code.
