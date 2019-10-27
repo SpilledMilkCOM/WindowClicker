@@ -32,23 +32,23 @@
 			this.label5 = new System.Windows.Forms.Label();
 			this.screenY = new System.Windows.Forms.Label();
 			this.screenX = new System.Windows.Forms.Label();
-			this.clickScreen = new System.Windows.Forms.Button();
+			this.cClickScreen = new System.Windows.Forms.Button();
 			this.progressBar = new System.Windows.Forms.ProgressBar();
 			this.iterationClicksLbl = new System.Windows.Forms.Label();
 			this.iterationClicksMin = new System.Windows.Forms.TextBox();
 			this.iterationClicksMax = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.clickRadius = new System.Windows.Forms.TextBox();
+			this.cClickRadius = new System.Windows.Forms.TextBox();
 			this.screenClickPanel = new System.Windows.Forms.Panel();
 			this.label10 = new System.Windows.Forms.Label();
 			this.estimatedRemaining = new System.Windows.Forms.Label();
 			this.estimatedTime = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
 			this.testClickPanel = new System.Windows.Forms.Panel();
-			this.iterationCount = new System.Windows.Forms.TextBox();
+			this.cIterationCount = new System.Windows.Forms.TextBox();
 			this.label8 = new System.Windows.Forms.Label();
-			this.waitMax = new System.Windows.Forms.TextBox();
-			this.waitMin = new System.Windows.Forms.TextBox();
+			this.cWaitMax = new System.Windows.Forms.TextBox();
+			this.cWaitMin = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.clickMax = new System.Windows.Forms.TextBox();
 			this.clickMin = new System.Windows.Forms.TextBox();
@@ -60,9 +60,10 @@
 			this.waiting = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.totalClicks = new System.Windows.Forms.Label();
-			this.addAction = new System.Windows.Forms.Button();
-			this.actionList = new System.Windows.Forms.ListBox();
-			this.useActions = new System.Windows.Forms.CheckBox();
+			this.cAddAction = new System.Windows.Forms.Button();
+			this.cActionList = new System.Windows.Forms.ListBox();
+			this.cUseActions = new System.Windows.Forms.CheckBox();
+			this.cUpdateAction = new System.Windows.Forms.Button();
 			this.screenClickPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -102,16 +103,16 @@
 			this.screenX.TabIndex = 5;
 			this.screenX.Text = "screenX";
 			// 
-			// clickScreen
+			// cClickScreen
 			// 
-			this.clickScreen.Enabled = false;
-			this.clickScreen.Location = new System.Drawing.Point(446, 193);
-			this.clickScreen.Name = "clickScreen";
-			this.clickScreen.Size = new System.Drawing.Size(103, 27);
-			this.clickScreen.TabIndex = 12;
-			this.clickScreen.Text = "Click Screen";
-			this.clickScreen.UseVisualStyleBackColor = true;
-			this.clickScreen.Click += new System.EventHandler(this.clickScreen_Click);
+			this.cClickScreen.Enabled = false;
+			this.cClickScreen.Location = new System.Drawing.Point(446, 193);
+			this.cClickScreen.Name = "cClickScreen";
+			this.cClickScreen.Size = new System.Drawing.Size(103, 27);
+			this.cClickScreen.TabIndex = 12;
+			this.cClickScreen.Text = "Click Screen";
+			this.cClickScreen.UseVisualStyleBackColor = true;
+			this.cClickScreen.Click += new System.EventHandler(this.clickScreen_Click);
 			// 
 			// progressBar
 			// 
@@ -157,13 +158,13 @@
 			this.label1.TabIndex = 25;
 			this.label1.Text = "Click Radius:";
 			// 
-			// clickRadius
+			// cClickRadius
 			// 
-			this.clickRadius.Location = new System.Drawing.Point(361, 123);
-			this.clickRadius.Name = "clickRadius";
-			this.clickRadius.Size = new System.Drawing.Size(56, 20);
-			this.clickRadius.TabIndex = 1;
-			this.clickRadius.Text = "10";
+			this.cClickRadius.Location = new System.Drawing.Point(361, 123);
+			this.cClickRadius.Name = "cClickRadius";
+			this.cClickRadius.Size = new System.Drawing.Size(56, 20);
+			this.cClickRadius.TabIndex = 1;
+			this.cClickRadius.Text = "10";
 			// 
 			// screenClickPanel
 			// 
@@ -223,13 +224,13 @@
 			this.testClickPanel.TabIndex = 41;
 			this.testClickPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TestClickPanel_MouseClick);
 			// 
-			// iterationCount
+			// cIterationCount
 			// 
-			this.iterationCount.Location = new System.Drawing.Point(72, 21);
-			this.iterationCount.Name = "iterationCount";
-			this.iterationCount.Size = new System.Drawing.Size(56, 20);
-			this.iterationCount.TabIndex = 33;
-			this.iterationCount.Text = "1";
+			this.cIterationCount.Location = new System.Drawing.Point(72, 21);
+			this.cIterationCount.Name = "cIterationCount";
+			this.cIterationCount.Size = new System.Drawing.Size(56, 20);
+			this.cIterationCount.TabIndex = 33;
+			this.cIterationCount.Text = "1";
 			// 
 			// label8
 			// 
@@ -240,21 +241,21 @@
 			this.label8.TabIndex = 40;
 			this.label8.Text = "Iterations:";
 			// 
-			// waitMax
+			// cWaitMax
 			// 
-			this.waitMax.Location = new System.Drawing.Point(280, 21);
-			this.waitMax.Name = "waitMax";
-			this.waitMax.Size = new System.Drawing.Size(56, 20);
-			this.waitMax.TabIndex = 37;
-			this.waitMax.Text = "10000";
+			this.cWaitMax.Location = new System.Drawing.Point(280, 21);
+			this.cWaitMax.Name = "cWaitMax";
+			this.cWaitMax.Size = new System.Drawing.Size(56, 20);
+			this.cWaitMax.TabIndex = 37;
+			this.cWaitMax.Text = "10000";
 			// 
-			// waitMin
+			// cWaitMin
 			// 
-			this.waitMin.Location = new System.Drawing.Point(218, 21);
-			this.waitMin.Name = "waitMin";
-			this.waitMin.Size = new System.Drawing.Size(56, 20);
-			this.waitMin.TabIndex = 36;
-			this.waitMin.Text = "5000";
+			this.cWaitMin.Location = new System.Drawing.Point(218, 21);
+			this.cWaitMin.Name = "cWaitMin";
+			this.cWaitMin.Size = new System.Drawing.Size(56, 20);
+			this.cWaitMin.TabIndex = 36;
+			this.cWaitMin.Text = "5000";
 			// 
 			// label7
 			// 
@@ -352,42 +353,56 @@
 			this.totalClicks.Size = new System.Drawing.Size(0, 13);
 			this.totalClicks.TabIndex = 51;
 			// 
-			// addAction
+			// cAddAction
 			// 
-			this.addAction.Location = new System.Drawing.Point(437, 259);
-			this.addAction.Name = "addAction";
-			this.addAction.Size = new System.Drawing.Size(53, 23);
-			this.addAction.TabIndex = 53;
-			this.addAction.Text = "Add";
-			this.addAction.UseVisualStyleBackColor = true;
-			this.addAction.Click += new System.EventHandler(this.addAction_Click);
+			this.cAddAction.Location = new System.Drawing.Point(437, 259);
+			this.cAddAction.Name = "cAddAction";
+			this.cAddAction.Size = new System.Drawing.Size(53, 23);
+			this.cAddAction.TabIndex = 53;
+			this.cAddAction.Text = "Add";
+			this.cAddAction.UseVisualStyleBackColor = true;
+			this.cAddAction.Click += new System.EventHandler(this.cAddAction_Click);
 			// 
-			// actionList
+			// cActionList
 			// 
-			this.actionList.FormattingEnabled = true;
-			this.actionList.Location = new System.Drawing.Point(16, 205);
-			this.actionList.Name = "actionList";
-			this.actionList.Size = new System.Drawing.Size(401, 173);
-			this.actionList.TabIndex = 52;
+			this.cActionList.FormattingEnabled = true;
+			this.cActionList.Location = new System.Drawing.Point(16, 205);
+			this.cActionList.Name = "cActionList";
+			this.cActionList.Size = new System.Drawing.Size(401, 173);
+			this.cActionList.TabIndex = 52;
+			this.cActionList.SelectedIndexChanged += new System.EventHandler(this.cActionList_SelectedIndexChanged);
 			// 
-			// useActions
+			// cUseActions
 			// 
-			this.useActions.AutoSize = true;
-			this.useActions.Location = new System.Drawing.Point(437, 300);
-			this.useActions.Name = "useActions";
-			this.useActions.Size = new System.Drawing.Size(83, 17);
-			this.useActions.TabIndex = 54;
-			this.useActions.Text = "Use Actions";
-			this.useActions.UseVisualStyleBackColor = true;
+			this.cUseActions.AutoSize = true;
+			this.cUseActions.Enabled = false;
+			this.cUseActions.Location = new System.Drawing.Point(437, 300);
+			this.cUseActions.Name = "cUseActions";
+			this.cUseActions.Size = new System.Drawing.Size(83, 17);
+			this.cUseActions.TabIndex = 54;
+			this.cUseActions.Text = "Use Actions";
+			this.cUseActions.UseVisualStyleBackColor = true;
+			// 
+			// cUpdateAction
+			// 
+			this.cUpdateAction.Enabled = false;
+			this.cUpdateAction.Location = new System.Drawing.Point(496, 259);
+			this.cUpdateAction.Name = "cUpdateAction";
+			this.cUpdateAction.Size = new System.Drawing.Size(53, 23);
+			this.cUpdateAction.TabIndex = 55;
+			this.cUpdateAction.Text = "Update";
+			this.cUpdateAction.UseVisualStyleBackColor = true;
+			this.cUpdateAction.Click += new System.EventHandler(this.cUpdateAction_Click);
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(607, 408);
-			this.Controls.Add(this.useActions);
-			this.Controls.Add(this.addAction);
-			this.Controls.Add(this.actionList);
+			this.Controls.Add(this.cUpdateAction);
+			this.Controls.Add(this.cUseActions);
+			this.Controls.Add(this.cAddAction);
+			this.Controls.Add(this.cActionList);
 			this.Controls.Add(this.totalClicks);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.waiting);
@@ -399,23 +414,23 @@
 			this.Controls.Add(this.estimatedTime);
 			this.Controls.Add(this.label9);
 			this.Controls.Add(this.testClickPanel);
-			this.Controls.Add(this.iterationCount);
+			this.Controls.Add(this.cIterationCount);
 			this.Controls.Add(this.label8);
-			this.Controls.Add(this.waitMax);
-			this.Controls.Add(this.waitMin);
+			this.Controls.Add(this.cWaitMax);
+			this.Controls.Add(this.cWaitMin);
 			this.Controls.Add(this.label7);
 			this.Controls.Add(this.clickMax);
 			this.Controls.Add(this.clickMin);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.label10);
 			this.Controls.Add(this.screenClickPanel);
-			this.Controls.Add(this.clickRadius);
+			this.Controls.Add(this.cClickRadius);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.iterationClicksMax);
 			this.Controls.Add(this.iterationClicksMin);
 			this.Controls.Add(this.iterationClicksLbl);
 			this.Controls.Add(this.progressBar);
-			this.Controls.Add(this.clickScreen);
+			this.Controls.Add(this.cClickScreen);
 			this.Name = "MainForm";
 			this.Opacity = 0.8D;
 			this.Text = "Window Clicker";
@@ -432,23 +447,23 @@
 		private System.Windows.Forms.Label label5;
 		private System.Windows.Forms.Label screenY;
 		private System.Windows.Forms.Label screenX;
-		private System.Windows.Forms.Button clickScreen;
+		private System.Windows.Forms.Button cClickScreen;
 		private System.Windows.Forms.ProgressBar progressBar;
 		private System.Windows.Forms.Label iterationClicksLbl;
 		private System.Windows.Forms.TextBox iterationClicksMin;
 		private System.Windows.Forms.TextBox iterationClicksMax;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox clickRadius;
+		private System.Windows.Forms.TextBox cClickRadius;
 		private System.Windows.Forms.Panel screenClickPanel;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label estimatedRemaining;
 		private System.Windows.Forms.Label estimatedTime;
 		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.Panel testClickPanel;
-		private System.Windows.Forms.TextBox iterationCount;
+		private System.Windows.Forms.TextBox cIterationCount;
 		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.TextBox waitMax;
-		private System.Windows.Forms.TextBox waitMin;
+		private System.Windows.Forms.TextBox cWaitMax;
+		private System.Windows.Forms.TextBox cWaitMin;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.TextBox clickMax;
 		private System.Windows.Forms.TextBox clickMin;
@@ -460,8 +475,9 @@
 		private System.Windows.Forms.Label waiting;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label totalClicks;
-		private System.Windows.Forms.Button addAction;
-		private System.Windows.Forms.ListBox actionList;
-		private System.Windows.Forms.CheckBox useActions;
+		private System.Windows.Forms.Button cAddAction;
+		private System.Windows.Forms.ListBox cActionList;
+		private System.Windows.Forms.CheckBox cUseActions;
+		private System.Windows.Forms.Button cUpdateAction;
 	}
 }
