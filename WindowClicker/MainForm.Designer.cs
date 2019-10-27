@@ -64,7 +64,16 @@
 			this.cActionList = new System.Windows.Forms.ListBox();
 			this.cUseActions = new System.Windows.Forms.CheckBox();
 			this.cUpdateAction = new System.Windows.Forms.Button();
+			this.cMainMenu = new System.Windows.Forms.MenuStrip();
+			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.cSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
+			this.cOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.screenClickPanel.SuspendLayout();
+			this.cMainMenu.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// label4
@@ -106,7 +115,7 @@
 			// cClickScreen
 			// 
 			this.cClickScreen.Enabled = false;
-			this.cClickScreen.Location = new System.Drawing.Point(446, 193);
+			this.cClickScreen.Location = new System.Drawing.Point(445, 205);
 			this.cClickScreen.Name = "cClickScreen";
 			this.cClickScreen.Size = new System.Drawing.Size(103, 27);
 			this.cClickScreen.TabIndex = 12;
@@ -117,15 +126,15 @@
 			// progressBar
 			// 
 			this.progressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.progressBar.Location = new System.Drawing.Point(0, 394);
+			this.progressBar.Location = new System.Drawing.Point(0, 338);
 			this.progressBar.Name = "progressBar";
-			this.progressBar.Size = new System.Drawing.Size(607, 14);
+			this.progressBar.Size = new System.Drawing.Size(608, 14);
 			this.progressBar.TabIndex = 13;
 			// 
 			// iterationClicksLbl
 			// 
 			this.iterationClicksLbl.AutoSize = true;
-			this.iterationClicksLbl.Location = new System.Drawing.Point(78, 68);
+			this.iterationClicksLbl.Location = new System.Drawing.Point(77, 80);
 			this.iterationClicksLbl.Name = "iterationClicksLbl";
 			this.iterationClicksLbl.Size = new System.Drawing.Size(38, 13);
 			this.iterationClicksLbl.TabIndex = 22;
@@ -133,7 +142,7 @@
 			// 
 			// iterationClicksMin
 			// 
-			this.iterationClicksMin.Location = new System.Drawing.Point(122, 65);
+			this.iterationClicksMin.Location = new System.Drawing.Point(121, 77);
 			this.iterationClicksMin.Name = "iterationClicksMin";
 			this.iterationClicksMin.Size = new System.Drawing.Size(56, 20);
 			this.iterationClicksMin.TabIndex = 2;
@@ -142,7 +151,7 @@
 			// 
 			// iterationClicksMax
 			// 
-			this.iterationClicksMax.Location = new System.Drawing.Point(186, 65);
+			this.iterationClicksMax.Location = new System.Drawing.Point(185, 77);
 			this.iterationClicksMax.Name = "iterationClicksMax";
 			this.iterationClicksMax.Size = new System.Drawing.Size(56, 20);
 			this.iterationClicksMax.TabIndex = 3;
@@ -152,7 +161,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(286, 126);
+			this.label1.Location = new System.Drawing.Point(285, 138);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(69, 13);
 			this.label1.TabIndex = 25;
@@ -160,7 +169,7 @@
 			// 
 			// cClickRadius
 			// 
-			this.cClickRadius.Location = new System.Drawing.Point(361, 123);
+			this.cClickRadius.Location = new System.Drawing.Point(360, 135);
 			this.cClickRadius.Name = "cClickRadius";
 			this.cClickRadius.Size = new System.Drawing.Size(56, 20);
 			this.cClickRadius.TabIndex = 1;
@@ -173,7 +182,7 @@
 			this.screenClickPanel.Controls.Add(this.screenX);
 			this.screenClickPanel.Controls.Add(this.screenY);
 			this.screenClickPanel.Controls.Add(this.label4);
-			this.screenClickPanel.Location = new System.Drawing.Point(424, 18);
+			this.screenClickPanel.Location = new System.Drawing.Point(423, 30);
 			this.screenClickPanel.Name = "screenClickPanel";
 			this.screenClickPanel.Size = new System.Drawing.Size(171, 108);
 			this.screenClickPanel.TabIndex = 27;
@@ -182,7 +191,7 @@
 			// label10
 			// 
 			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(3, 173);
+			this.label10.Location = new System.Drawing.Point(2, 185);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(109, 13);
 			this.label10.TabIndex = 31;
@@ -191,7 +200,7 @@
 			// estimatedRemaining
 			// 
 			this.estimatedRemaining.AutoSize = true;
-			this.estimatedRemaining.Location = new System.Drawing.Point(119, 173);
+			this.estimatedRemaining.Location = new System.Drawing.Point(118, 185);
 			this.estimatedRemaining.Name = "estimatedRemaining";
 			this.estimatedRemaining.Size = new System.Drawing.Size(102, 13);
 			this.estimatedRemaining.TabIndex = 44;
@@ -200,7 +209,7 @@
 			// estimatedTime
 			// 
 			this.estimatedTime.AutoSize = true;
-			this.estimatedTime.Location = new System.Drawing.Point(119, 126);
+			this.estimatedTime.Location = new System.Drawing.Point(118, 138);
 			this.estimatedTime.Name = "estimatedTime";
 			this.estimatedTime.Size = new System.Drawing.Size(75, 13);
 			this.estimatedTime.TabIndex = 43;
@@ -209,7 +218,7 @@
 			// label9
 			// 
 			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(30, 126);
+			this.label9.Location = new System.Drawing.Point(29, 138);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(82, 13);
 			this.label9.TabIndex = 42;
@@ -218,7 +227,7 @@
 			// testClickPanel
 			// 
 			this.testClickPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.testClickPanel.Location = new System.Drawing.Point(424, 132);
+			this.testClickPanel.Location = new System.Drawing.Point(423, 144);
 			this.testClickPanel.Name = "testClickPanel";
 			this.testClickPanel.Size = new System.Drawing.Size(171, 52);
 			this.testClickPanel.TabIndex = 41;
@@ -226,7 +235,7 @@
 			// 
 			// cIterationCount
 			// 
-			this.cIterationCount.Location = new System.Drawing.Point(72, 21);
+			this.cIterationCount.Location = new System.Drawing.Point(71, 33);
 			this.cIterationCount.Name = "cIterationCount";
 			this.cIterationCount.Size = new System.Drawing.Size(56, 20);
 			this.cIterationCount.TabIndex = 33;
@@ -235,7 +244,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(13, 21);
+			this.label8.Location = new System.Drawing.Point(12, 33);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(53, 13);
 			this.label8.TabIndex = 40;
@@ -243,7 +252,7 @@
 			// 
 			// cWaitMax
 			// 
-			this.cWaitMax.Location = new System.Drawing.Point(280, 21);
+			this.cWaitMax.Location = new System.Drawing.Point(279, 33);
 			this.cWaitMax.Name = "cWaitMax";
 			this.cWaitMax.Size = new System.Drawing.Size(56, 20);
 			this.cWaitMax.TabIndex = 37;
@@ -251,7 +260,7 @@
 			// 
 			// cWaitMin
 			// 
-			this.cWaitMin.Location = new System.Drawing.Point(218, 21);
+			this.cWaitMin.Location = new System.Drawing.Point(217, 33);
 			this.cWaitMin.Name = "cWaitMin";
 			this.cWaitMin.Size = new System.Drawing.Size(56, 20);
 			this.cWaitMin.TabIndex = 36;
@@ -260,7 +269,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(145, 24);
+			this.label7.Location = new System.Drawing.Point(144, 36);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(67, 13);
 			this.label7.TabIndex = 39;
@@ -268,7 +277,7 @@
 			// 
 			// clickMax
 			// 
-			this.clickMax.Location = new System.Drawing.Point(186, 91);
+			this.clickMax.Location = new System.Drawing.Point(185, 103);
 			this.clickMax.Name = "clickMax";
 			this.clickMax.Size = new System.Drawing.Size(56, 20);
 			this.clickMax.TabIndex = 35;
@@ -276,7 +285,7 @@
 			// 
 			// clickMin
 			// 
-			this.clickMin.Location = new System.Drawing.Point(122, 91);
+			this.clickMin.Location = new System.Drawing.Point(121, 103);
 			this.clickMin.Name = "clickMin";
 			this.clickMin.Size = new System.Drawing.Size(56, 20);
 			this.clickMin.TabIndex = 34;
@@ -285,7 +294,7 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(48, 94);
+			this.label6.Location = new System.Drawing.Point(47, 106);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(68, 13);
 			this.label6.TabIndex = 38;
@@ -294,7 +303,7 @@
 			// label11
 			// 
 			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(38, 151);
+			this.label11.Location = new System.Drawing.Point(37, 163);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(74, 13);
 			this.label11.TabIndex = 45;
@@ -303,7 +312,7 @@
 			// elapsedTime
 			// 
 			this.elapsedTime.AutoSize = true;
-			this.elapsedTime.Location = new System.Drawing.Point(119, 151);
+			this.elapsedTime.Location = new System.Drawing.Point(118, 163);
 			this.elapsedTime.Name = "elapsedTime";
 			this.elapsedTime.Size = new System.Drawing.Size(52, 13);
 			this.elapsedTime.TabIndex = 46;
@@ -312,7 +321,7 @@
 			// clickDetail
 			// 
 			this.clickDetail.AutoSize = true;
-			this.clickDetail.Location = new System.Drawing.Point(248, 94);
+			this.clickDetail.Location = new System.Drawing.Point(247, 106);
 			this.clickDetail.Name = "clickDetail";
 			this.clickDetail.Size = new System.Drawing.Size(24, 13);
 			this.clickDetail.TabIndex = 47;
@@ -321,7 +330,7 @@
 			// iterationClicksDetail
 			// 
 			this.iterationClicksDetail.AutoSize = true;
-			this.iterationClicksDetail.Location = new System.Drawing.Point(248, 68);
+			this.iterationClicksDetail.Location = new System.Drawing.Point(247, 80);
 			this.iterationClicksDetail.Name = "iterationClicksDetail";
 			this.iterationClicksDetail.Size = new System.Drawing.Size(24, 13);
 			this.iterationClicksDetail.TabIndex = 48;
@@ -330,7 +339,7 @@
 			// waiting
 			// 
 			this.waiting.AutoSize = true;
-			this.waiting.Location = new System.Drawing.Point(286, 172);
+			this.waiting.Location = new System.Drawing.Point(285, 184);
 			this.waiting.Name = "waiting";
 			this.waiting.Size = new System.Drawing.Size(40, 13);
 			this.waiting.TabIndex = 49;
@@ -339,7 +348,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(307, 68);
+			this.label2.Location = new System.Drawing.Point(306, 80);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(34, 13);
 			this.label2.TabIndex = 50;
@@ -348,14 +357,14 @@
 			// totalClicks
 			// 
 			this.totalClicks.AutoSize = true;
-			this.totalClicks.Location = new System.Drawing.Point(347, 68);
+			this.totalClicks.Location = new System.Drawing.Point(346, 80);
 			this.totalClicks.Name = "totalClicks";
 			this.totalClicks.Size = new System.Drawing.Size(0, 13);
 			this.totalClicks.TabIndex = 51;
 			// 
 			// cAddAction
 			// 
-			this.cAddAction.Location = new System.Drawing.Point(437, 259);
+			this.cAddAction.Location = new System.Drawing.Point(436, 271);
 			this.cAddAction.Name = "cAddAction";
 			this.cAddAction.Size = new System.Drawing.Size(53, 23);
 			this.cAddAction.TabIndex = 53;
@@ -366,9 +375,9 @@
 			// cActionList
 			// 
 			this.cActionList.FormattingEnabled = true;
-			this.cActionList.Location = new System.Drawing.Point(16, 205);
+			this.cActionList.Location = new System.Drawing.Point(15, 217);
 			this.cActionList.Name = "cActionList";
-			this.cActionList.Size = new System.Drawing.Size(401, 173);
+			this.cActionList.Size = new System.Drawing.Size(401, 108);
 			this.cActionList.TabIndex = 52;
 			this.cActionList.SelectedIndexChanged += new System.EventHandler(this.cActionList_SelectedIndexChanged);
 			// 
@@ -376,7 +385,7 @@
 			// 
 			this.cUseActions.AutoSize = true;
 			this.cUseActions.Enabled = false;
-			this.cUseActions.Location = new System.Drawing.Point(437, 300);
+			this.cUseActions.Location = new System.Drawing.Point(436, 312);
 			this.cUseActions.Name = "cUseActions";
 			this.cUseActions.Size = new System.Drawing.Size(83, 17);
 			this.cUseActions.TabIndex = 54;
@@ -386,7 +395,7 @@
 			// cUpdateAction
 			// 
 			this.cUpdateAction.Enabled = false;
-			this.cUpdateAction.Location = new System.Drawing.Point(496, 259);
+			this.cUpdateAction.Location = new System.Drawing.Point(495, 271);
 			this.cUpdateAction.Name = "cUpdateAction";
 			this.cUpdateAction.Size = new System.Drawing.Size(53, 23);
 			this.cUpdateAction.TabIndex = 55;
@@ -394,11 +403,75 @@
 			this.cUpdateAction.UseVisualStyleBackColor = true;
 			this.cUpdateAction.Click += new System.EventHandler(this.cUpdateAction_Click);
 			// 
+			// cMainMenu
+			// 
+			this.cMainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
+			this.cMainMenu.Location = new System.Drawing.Point(0, 0);
+			this.cMainMenu.Name = "cMainMenu";
+			this.cMainMenu.Size = new System.Drawing.Size(608, 24);
+			this.cMainMenu.TabIndex = 56;
+			this.cMainMenu.Text = "menuStrip1";
+			// 
+			// fileToolStripMenuItem
+			// 
+			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.exitToolStripMenuItem});
+			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+			this.fileToolStripMenuItem.Text = "&File";
+			// 
+			// loadToolStripMenuItem
+			// 
+			this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+			this.loadToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+			this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.loadToolStripMenuItem.Text = "L&oad...";
+			this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
+			// 
+			// saveToolStripMenuItem
+			// 
+			this.saveToolStripMenuItem.Enabled = false;
+			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+			this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.saveToolStripMenuItem.Text = "&Save...";
+			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+			// 
+			// toolStripMenuItem1
+			// 
+			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+			// 
+			// exitToolStripMenuItem
+			// 
+			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+			this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.exitToolStripMenuItem.Text = "E&xit";
+			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+			// 
+			// cSaveFileDialog
+			// 
+			this.cSaveFileDialog.CheckFileExists = true;
+			this.cSaveFileDialog.DefaultExt = "txt";
+			this.cSaveFileDialog.FileName = "WindowClicker.JSON.txt";
+			this.cSaveFileDialog.InitialDirectory = "c:\\usr\\tmp";
+			// 
+			// cOpenFileDialog
+			// 
+			this.cOpenFileDialog.FileName = "WindowClicker.JSON.txt";
+			this.cOpenFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+			this.cOpenFileDialog.InitialDirectory = "c:\\usr\\tmp";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(607, 408);
+			this.ClientSize = new System.Drawing.Size(608, 352);
 			this.Controls.Add(this.cUpdateAction);
 			this.Controls.Add(this.cUseActions);
 			this.Controls.Add(this.cAddAction);
@@ -431,12 +504,16 @@
 			this.Controls.Add(this.iterationClicksLbl);
 			this.Controls.Add(this.progressBar);
 			this.Controls.Add(this.cClickScreen);
+			this.Controls.Add(this.cMainMenu);
+			this.MainMenuStrip = this.cMainMenu;
 			this.Name = "MainForm";
 			this.Opacity = 0.8D;
 			this.Text = "Window Clicker";
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.screenClickPanel.ResumeLayout(false);
 			this.screenClickPanel.PerformLayout();
+			this.cMainMenu.ResumeLayout(false);
+			this.cMainMenu.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -479,5 +556,13 @@
 		private System.Windows.Forms.ListBox cActionList;
 		private System.Windows.Forms.CheckBox cUseActions;
 		private System.Windows.Forms.Button cUpdateAction;
+		private System.Windows.Forms.MenuStrip cMainMenu;
+		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+		private System.Windows.Forms.SaveFileDialog cSaveFileDialog;
+		private System.Windows.Forms.OpenFileDialog cOpenFileDialog;
 	}
 }

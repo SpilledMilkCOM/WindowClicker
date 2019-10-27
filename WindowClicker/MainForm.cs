@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Json;
 using System.Threading;
 using System.Windows.Forms;
 using WindowClicker.Models;
@@ -36,6 +38,56 @@ namespace WindowClicker
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
+		}
+
+		//----==== MENUS ====----------------------------------------------------------------------------
+		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Application.Exit();
+		}
+
+		private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			// Prompt for file
+
+			if (cOpenFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				// Save JSON to file.
+
+				var serializer = new DataContractJsonSerializer(typeof(List<ProcessAction>));
+
+				using (var fileStream = File.OpenRead(cOpenFileDialog.FileName))
+				{
+					_actions = serializer.ReadObject(fileStream) as List<ProcessAction>;
+
+					if (_actions == null)
+					{
+						_actions = new List<ProcessAction>();
+					}
+					else
+					{
+						cActionList.Items.Clear();
+						_actions.ForEach(item => cActionList.Items.Add(item));
+					}
+				}
+			}
+		}
+
+		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			// Prompt for file
+
+			if (cSaveFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				// Save JSON to file.
+
+				var serializer = new DataContractJsonSerializer(typeof(List<ProcessAction>));
+
+				using (var fileStream = File.OpenWrite(cSaveFileDialog.FileName))
+				{
+					serializer.WriteObject(fileStream, _actions);
+				}
+			}
 		}
 
 		//----==== EVENTS ====---------------------------------------------------------------------------
@@ -80,6 +132,7 @@ namespace WindowClicker
 				cActionList.Items.Add(action);
 
 				cUseActions.Enabled = true;
+				saveToolStripMenuItem.Enabled = true;
 			}
 		}
 
@@ -261,6 +314,7 @@ namespace WindowClicker
 			{
 				result = new ProcessAction
 				{
+					ActionType = "ButtonClick",
 					ClickRadius = int.Parse(cClickRadius.Text),
 					ClickRange = new Range { Max = int.Parse(clickMax.Text), Min = int.Parse(clickMin.Text) },
 					ClicksRange = new Range { Max = int.Parse(iterationClicksMax.Text), Min = int.Parse(iterationClicksMin.Text) },
@@ -377,5 +431,7 @@ namespace WindowClicker
 
 			//waiting.Text = string.Empty;
 		}
+
+
 	}
 }
