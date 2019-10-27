@@ -72,6 +72,7 @@
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.cSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
 			this.cOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+			this.cDeleteAction = new System.Windows.Forms.Button();
 			this.screenClickPanel.SuspendLayout();
 			this.cMainMenu.SuspendLayout();
 			this.SuspendLayout();
@@ -115,7 +116,7 @@
 			// cClickScreen
 			// 
 			this.cClickScreen.Enabled = false;
-			this.cClickScreen.Location = new System.Drawing.Point(445, 205);
+			this.cClickScreen.Location = new System.Drawing.Point(493, 330);
 			this.cClickScreen.Name = "cClickScreen";
 			this.cClickScreen.Size = new System.Drawing.Size(103, 27);
 			this.cClickScreen.TabIndex = 12;
@@ -126,7 +127,7 @@
 			// progressBar
 			// 
 			this.progressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.progressBar.Location = new System.Drawing.Point(0, 338);
+			this.progressBar.Location = new System.Drawing.Point(0, 363);
 			this.progressBar.Name = "progressBar";
 			this.progressBar.Size = new System.Drawing.Size(608, 14);
 			this.progressBar.TabIndex = 13;
@@ -364,7 +365,7 @@
 			// 
 			// cAddAction
 			// 
-			this.cAddAction.Location = new System.Drawing.Point(436, 271);
+			this.cAddAction.Location = new System.Drawing.Point(15, 220);
 			this.cAddAction.Name = "cAddAction";
 			this.cAddAction.Size = new System.Drawing.Size(53, 23);
 			this.cAddAction.TabIndex = 53;
@@ -375,7 +376,7 @@
 			// cActionList
 			// 
 			this.cActionList.FormattingEnabled = true;
-			this.cActionList.Location = new System.Drawing.Point(15, 217);
+			this.cActionList.Location = new System.Drawing.Point(15, 249);
 			this.cActionList.Name = "cActionList";
 			this.cActionList.Size = new System.Drawing.Size(401, 108);
 			this.cActionList.TabIndex = 52;
@@ -385,7 +386,7 @@
 			// 
 			this.cUseActions.AutoSize = true;
 			this.cUseActions.Enabled = false;
-			this.cUseActions.Location = new System.Drawing.Point(436, 312);
+			this.cUseActions.Location = new System.Drawing.Point(333, 226);
 			this.cUseActions.Name = "cUseActions";
 			this.cUseActions.Size = new System.Drawing.Size(83, 17);
 			this.cUseActions.TabIndex = 54;
@@ -395,7 +396,7 @@
 			// cUpdateAction
 			// 
 			this.cUpdateAction.Enabled = false;
-			this.cUpdateAction.Location = new System.Drawing.Point(495, 271);
+			this.cUpdateAction.Location = new System.Drawing.Point(74, 220);
 			this.cUpdateAction.Name = "cUpdateAction";
 			this.cUpdateAction.Size = new System.Drawing.Size(53, 23);
 			this.cUpdateAction.TabIndex = 55;
@@ -428,7 +429,7 @@
 			// 
 			this.loadToolStripMenuItem.Name = "loadToolStripMenuItem";
 			this.loadToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-			this.loadToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.loadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.loadToolStripMenuItem.Text = "L&oad...";
 			this.loadToolStripMenuItem.Click += new System.EventHandler(this.loadToolStripMenuItem_Click);
 			// 
@@ -437,26 +438,25 @@
 			this.saveToolStripMenuItem.Enabled = false;
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
 			this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.saveToolStripMenuItem.Text = "&Save...";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
 			// 
 			// toolStripMenuItem1
 			// 
 			this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-			this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+			this.toolStripMenuItem1.Size = new System.Drawing.Size(149, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
 			this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.exitToolStripMenuItem.Text = "E&xit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
 			// cSaveFileDialog
 			// 
-			this.cSaveFileDialog.CheckFileExists = true;
 			this.cSaveFileDialog.DefaultExt = "txt";
 			this.cSaveFileDialog.FileName = "WindowClicker.JSON.txt";
 			this.cSaveFileDialog.InitialDirectory = "c:\\usr\\tmp";
@@ -467,11 +467,23 @@
 			this.cOpenFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
 			this.cOpenFileDialog.InitialDirectory = "c:\\usr\\tmp";
 			// 
+			// cDeleteAction
+			// 
+			this.cDeleteAction.Enabled = false;
+			this.cDeleteAction.Location = new System.Drawing.Point(133, 220);
+			this.cDeleteAction.Name = "cDeleteAction";
+			this.cDeleteAction.Size = new System.Drawing.Size(53, 23);
+			this.cDeleteAction.TabIndex = 57;
+			this.cDeleteAction.Text = "Delete";
+			this.cDeleteAction.UseVisualStyleBackColor = true;
+			this.cDeleteAction.Click += new System.EventHandler(this.cDeleteAction_Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(608, 352);
+			this.ClientSize = new System.Drawing.Size(608, 377);
+			this.Controls.Add(this.cDeleteAction);
 			this.Controls.Add(this.cUpdateAction);
 			this.Controls.Add(this.cUseActions);
 			this.Controls.Add(this.cAddAction);
@@ -564,5 +576,6 @@
 		private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
 		private System.Windows.Forms.SaveFileDialog cSaveFileDialog;
 		private System.Windows.Forms.OpenFileDialog cOpenFileDialog;
+		private System.Windows.Forms.Button cDeleteAction;
 	}
 }

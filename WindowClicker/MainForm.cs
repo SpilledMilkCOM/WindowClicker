@@ -65,6 +65,9 @@ namespace WindowClicker
 					{
 						cActionList.Items.Clear();
 						actions.ForEach(item => cActionList.Items.Add(item));
+
+						cUseActions.Checked = true;
+						cUseActions.Enabled = true;
 					}
 				}
 			}
@@ -101,6 +104,7 @@ namespace WindowClicker
 			if (cActionList.SelectedIndex >= 0)
 			{
 				cUpdateAction.Enabled = true;
+				cDeleteAction.Enabled = true;
 
 				// Fill in fields based on the selcted action.
 				// This is what we had to do BEFORE MVVM magic.
@@ -121,6 +125,11 @@ namespace WindowClicker
 				screenX.Text = action.Location.X.ToString();
 				screenY.Text = action.Location.Y.ToString();
 			}
+			else
+			{
+				cUpdateAction.Enabled = false;
+				cDeleteAction.Enabled = false;
+			}
 		}
 
 		private void cAddAction_Click(object sender, EventArgs e)
@@ -136,6 +145,30 @@ namespace WindowClicker
 			}
 		}
 
+		private void cDeleteAction_Click(object sender, EventArgs e)
+		{
+			if (cActionList.SelectedIndex >= 0)
+			{
+				var action = ConstructAction();
+
+				// Delete the selected action.
+
+				var selectedIndex = cActionList.SelectedIndex;
+
+				cActionList.Items.RemoveAt(selectedIndex);
+
+				if (cActionList.Items.Count > 0)
+				{
+					if (selectedIndex >= cActionList.Items.Count)
+					{
+						selectedIndex = cActionList.Items.Count - 1;
+					}
+
+					cActionList.SelectedIndex = selectedIndex;
+				}
+			}
+		}
+
 		private void cUpdateAction_Click(object sender, EventArgs e)
 		{
 			if (cActionList.SelectedIndex >= 0)
@@ -148,7 +181,7 @@ namespace WindowClicker
 
 				cActionList.Items.RemoveAt(selectedIndex);
 				cActionList.Items.Insert(selectedIndex, action);
-				cActionList.SelectedIndex = selectedIndex;			// Select updated item. (removal and insert deselects selected item).
+				cActionList.SelectedIndex = selectedIndex;          // Select updated item. (removal and insert deselects selected item).
 			}
 		}
 
@@ -188,8 +221,14 @@ namespace WindowClicker
 				if (cUseActions.Checked)
 				{
 					var selectedIndex = 0;
+					var actions = new List<ProcessAction>();            // Create a copy so the SelectedIndex can be set while iterating.
 
-					foreach (ProcessAction action in cActionList.Items)
+					foreach (ProcessAction item in cActionList.Items)
+					{
+						actions.Add(item);
+					}
+
+					foreach (ProcessAction action in actions)
 					{
 						cActionList.SelectedIndex = selectedIndex++;
 
@@ -369,6 +408,10 @@ namespace WindowClicker
 
 					var elapsedMS = DateTime.Now.Subtract(timeStarted).TotalMilliseconds;
 
+					if (progressOffset + click > progressBar.Maximum)
+					{
+						progressBar.Maximum = progressOffset + click + 10;
+					}
 					progressBar.Value = progressOffset + click;
 
 					elapsedTime.Text = new TimeSpan(0, 0, 0, 0, (int)elapsedMS).ToString(TIMESPAN_FORMAT);
@@ -429,7 +472,5 @@ namespace WindowClicker
 
 			//waiting.Text = string.Empty;
 		}
-
-
 	}
 }
