@@ -73,6 +73,7 @@
 			this.cSaveFileDialog = new System.Windows.Forms.SaveFileDialog();
 			this.cOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.cDeleteAction = new System.Windows.Forms.Button();
+			this.cActionCount = new System.Windows.Forms.Label();
 			this.screenClickPanel.SuspendLayout();
 			this.cMainMenu.SuspendLayout();
 			this.SuspendLayout();
@@ -386,7 +387,7 @@
 			// 
 			this.cUseActions.AutoSize = true;
 			this.cUseActions.Enabled = false;
-			this.cUseActions.Location = new System.Drawing.Point(333, 226);
+			this.cUseActions.Location = new System.Drawing.Point(279, 226);
 			this.cUseActions.Name = "cUseActions";
 			this.cUseActions.Size = new System.Drawing.Size(83, 17);
 			this.cUseActions.TabIndex = 54;
@@ -478,11 +479,21 @@
 			this.cDeleteAction.UseVisualStyleBackColor = true;
 			this.cDeleteAction.Click += new System.EventHandler(this.cDeleteAction_Click);
 			// 
+			// cActionCount
+			// 
+			this.cActionCount.AutoSize = true;
+			this.cActionCount.Location = new System.Drawing.Point(368, 227);
+			this.cActionCount.Name = "cActionCount";
+			this.cActionCount.Size = new System.Drawing.Size(71, 13);
+			this.cActionCount.TabIndex = 58;
+			this.cActionCount.Text = "cActionCount";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(608, 377);
+			this.Controls.Add(this.cActionCount);
 			this.Controls.Add(this.cDeleteAction);
 			this.Controls.Add(this.cUpdateAction);
 			this.Controls.Add(this.cUseActions);
@@ -577,5 +588,6 @@
 		private System.Windows.Forms.SaveFileDialog cSaveFileDialog;
 		private System.Windows.Forms.OpenFileDialog cOpenFileDialog;
 		private System.Windows.Forms.Button cDeleteAction;
+		private System.Windows.Forms.Label cActionCount;
 	}
 }

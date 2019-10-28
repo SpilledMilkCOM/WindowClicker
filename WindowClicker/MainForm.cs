@@ -69,6 +69,8 @@ namespace WindowClicker
 						cUseActions.Checked = true;
 						cUseActions.Enabled = true;
 					}
+
+					UpdateActionCount();
 				}
 			}
 		}
@@ -142,6 +144,8 @@ namespace WindowClicker
 
 				cUseActions.Enabled = true;
 				saveToolStripMenuItem.Enabled = true;
+
+				UpdateActionCount();
 			}
 		}
 
@@ -166,6 +170,8 @@ namespace WindowClicker
 
 					cActionList.SelectedIndex = selectedIndex;
 				}
+
+				UpdateActionCount();
 			}
 		}
 
@@ -445,6 +451,11 @@ namespace WindowClicker
 
 			clickDetail.Text = $"{duration} / {cDetail / totClicks}";
 			iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / totClicks}";
+		}
+
+		private void UpdateActionCount()
+		{
+			cActionCount.Text = cActionList.Items.Count.ToString();
 		}
 
 		private void WaitWhileHandlingEvents(long milliseconds)
