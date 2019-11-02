@@ -5,6 +5,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Json;
+using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using WindowClicker.Models;
@@ -53,9 +54,16 @@ namespace WindowClicker
 
 				var serializer = new DataContractJsonSerializer(typeof(List<ProcessAction>));
 
-				using (var fileStream = File.OpenRead(cOpenFileDialog.FileName))
+				//var jsonText = File.ReadAllText(cOpenFileDialog.FileName);
+
+				//jsonText = jsonText.Replace("\n", string.Empty).Replace("	", string.Empty);
+
+				//using (var stream = new MemoryStream())
+				using (var stream = File.OpenRead(cOpenFileDialog.FileName))
 				{
-					var actions = serializer.ReadObject(fileStream) as List<ProcessAction>;
+					//stream.Write(Encoding.ASCII.GetBytes(jsonText), 0, jsonText.Length);
+
+					var actions = serializer.ReadObject(stream) as List<ProcessAction>;
 
 					if (actions == null)
 					{
@@ -216,9 +224,23 @@ namespace WindowClicker
 			var random = new Random();
 
 			progressBar.Minimum = 0;
+			progressBar.Maximum = 0;
 
 			// Initial maximum is based on the iterations * the average of the number of clicks (not really time based)
-			progressBar.Maximum = iterMax * (singleAction.ClicksRange.Min + singleAction.ClicksRange.Max) / 2;
+
+			if (cUseActions.Checked)
+			{
+				foreach (ProcessAction action in cActionList.Items)
+				{
+					progressBar.Maximum += (action.ClicksRange.Min + action.ClicksRange.Max) / 2;
+				}
+
+				progressBar.Maximum *= iterMax;
+			}
+			else
+			{
+				progressBar.Maximum = iterMax * (singleAction.ClicksRange.Min + singleAction.ClicksRange.Max) / 2;
+			}
 
 			for (int iteration = 1; iteration <= iterMax && _isStarted; iteration++)
 			{
@@ -384,6 +406,11 @@ namespace WindowClicker
 			var random = new Random();
 			var timeStarted = DateTime.Now;
 
+			if (iterClicksMin > iterClicksMax)
+			{
+				Swap(ref iterClicksMin, ref iterClicksMax);
+			}
+
 			clicksMax = random.Next(iterClicksMin, iterClicksMax);
 
 			if (action.ClickRange.Min == 0 && action.ClickRange.Min == action.ClickRange.Max)
@@ -451,6 +478,13 @@ namespace WindowClicker
 
 			clickDetail.Text = $"{duration} / {cDetail / totClicks}";
 			iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / totClicks}";
+		}
+
+		private void Swap<T>(ref T lhs, ref T rhs)
+		{
+			T temp = lhs;
+			lhs = rhs;
+			rhs = temp;
 		}
 
 		private void UpdateActionCount()
