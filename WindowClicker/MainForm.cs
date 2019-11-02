@@ -39,6 +39,7 @@ namespace WindowClicker
 		}
 
 		//----==== MENUS ====----------------------------------------------------------------------------
+
 		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			Application.Exit();
@@ -46,40 +47,48 @@ namespace WindowClicker
 
 		private void loadToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			// Prompt for file
-
-			if (cOpenFileDialog.ShowDialog() == DialogResult.OK)
+			try
 			{
-				// Save JSON to file.
+				// Prompt for file
 
-				var serializer = new DataContractJsonSerializer(typeof(List<ProcessAction>));
-
-				//var jsonText = File.ReadAllText(cOpenFileDialog.FileName);
-
-				//jsonText = jsonText.Replace("\n", string.Empty).Replace("	", string.Empty);
-
-				//using (var stream = new MemoryStream())
-				using (var stream = File.OpenRead(cOpenFileDialog.FileName))
+				if (cOpenFileDialog.ShowDialog() == DialogResult.OK)
 				{
-					//stream.Write(Encoding.ASCII.GetBytes(jsonText), 0, jsonText.Length);
+					// Save JSON to file.
 
-					var actions = serializer.ReadObject(stream) as List<ProcessAction>;
+					var serializer = new DataContractJsonSerializer(typeof(List<ProcessAction>));
 
-					if (actions == null)
+					//var jsonText = File.ReadAllText(cOpenFileDialog.FileName);
+
+					//jsonText = jsonText.Replace("\n", string.Empty).Replace("	", string.Empty);
+
+					//using (var stream = new MemoryStream())
+					using (var stream = File.OpenRead(cOpenFileDialog.FileName))
 					{
-						actions = new List<ProcessAction>();
-					}
-					else
-					{
-						cActionList.Items.Clear();
-						actions.ForEach(item => cActionList.Items.Add(item));
+						//stream.Write(Encoding.ASCII.GetBytes(jsonText), 0, jsonText.Length);
 
-						cUseActions.Checked = true;
-						cUseActions.Enabled = true;
-					}
+						var actions = serializer.ReadObject(stream) as List<ProcessAction>;
 
-					UpdateActionCount();
+						if (actions == null)
+						{
+							actions = new List<ProcessAction>();
+						}
+						else
+						{
+							cActionList.Items.Clear();
+							actions.ForEach(item => cActionList.Items.Add(item));
+
+							cUseActions.Checked = true;
+							cUseActions.Enabled = true;
+							cClickScreen.Enabled = true;
+						}
+
+						UpdateActionCount();
+					}
 				}
+			}
+			catch (Exception ex)
+			{
+				DisplayError(ex, "Error Loading File");
 			}
 		}
 
@@ -156,50 +165,7 @@ namespace WindowClicker
 				UpdateActionCount();
 			}
 		}
-
-		private void cDeleteAction_Click(object sender, EventArgs e)
-		{
-			if (cActionList.SelectedIndex >= 0)
-			{
-				var action = ConstructAction();
-
-				// Delete the selected action.
-
-				var selectedIndex = cActionList.SelectedIndex;
-
-				cActionList.Items.RemoveAt(selectedIndex);
-
-				if (cActionList.Items.Count > 0)
-				{
-					if (selectedIndex >= cActionList.Items.Count)
-					{
-						selectedIndex = cActionList.Items.Count - 1;
-					}
-
-					cActionList.SelectedIndex = selectedIndex;
-				}
-
-				UpdateActionCount();
-			}
-		}
-
-		private void cUpdateAction_Click(object sender, EventArgs e)
-		{
-			if (cActionList.SelectedIndex >= 0)
-			{
-				var action = ConstructAction();
-
-				// Replace the selected action.
-
-				var selectedIndex = cActionList.SelectedIndex;
-
-				cActionList.Items.RemoveAt(selectedIndex);
-				cActionList.Items.Insert(selectedIndex, action);
-				cActionList.SelectedIndex = selectedIndex;          // Select updated item. (removal and insert deselects selected item).
-			}
-		}
-
-		private void clickScreen_Click(object sender, EventArgs e)
+		private void cClickScreen_Click(object sender, EventArgs e)
 		{
 			if (_isStarted)
 			{
@@ -292,6 +258,48 @@ namespace WindowClicker
 			progressBar.Value = 0;      // Turn "off"
 			_isStarted = false;
 			cClickScreen.Text = "Click Screen";
+		}
+
+		private void cDeleteAction_Click(object sender, EventArgs e)
+		{
+			if (cActionList.SelectedIndex >= 0)
+			{
+				var action = ConstructAction();
+
+				// Delete the selected action.
+
+				var selectedIndex = cActionList.SelectedIndex;
+
+				cActionList.Items.RemoveAt(selectedIndex);
+
+				if (cActionList.Items.Count > 0)
+				{
+					if (selectedIndex >= cActionList.Items.Count)
+					{
+						selectedIndex = cActionList.Items.Count - 1;
+					}
+
+					cActionList.SelectedIndex = selectedIndex;
+				}
+
+				UpdateActionCount();
+			}
+		}
+
+		private void cUpdateAction_Click(object sender, EventArgs e)
+		{
+			if (cActionList.SelectedIndex >= 0)
+			{
+				var action = ConstructAction();
+
+				// Replace the selected action.
+
+				var selectedIndex = cActionList.SelectedIndex;
+
+				cActionList.Items.RemoveAt(selectedIndex);
+				cActionList.Items.Insert(selectedIndex, action);
+				cActionList.SelectedIndex = selectedIndex;          // Select updated item. (removal and insert deselects selected item).
+			}
 		}
 
 		private void iterationClicksMin_Leave(object sender, EventArgs e)
@@ -390,6 +398,11 @@ namespace WindowClicker
 			}
 
 			return result;
+		}
+
+		private void DisplayError(Exception ex, string caption)
+		{
+			MessageBox.Show(ex.Message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
 		}
 
 		private void ProcessAction(ProcessAction action, int iter, ref int clicksMax, ref int totClicks)

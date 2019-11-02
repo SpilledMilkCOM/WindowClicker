@@ -123,7 +123,7 @@
 			this.cClickScreen.TabIndex = 12;
 			this.cClickScreen.Text = "Click Screen";
 			this.cClickScreen.UseVisualStyleBackColor = true;
-			this.cClickScreen.Click += new System.EventHandler(this.clickScreen_Click);
+			this.cClickScreen.Click += new System.EventHandler(this.cClickScreen_Click);
 			// 
 			// progressBar
 			// 

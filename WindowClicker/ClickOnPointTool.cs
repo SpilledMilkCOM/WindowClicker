@@ -7,6 +7,7 @@ namespace WindowClicker
 {
 	/// <summary>
 	/// Borrowed this code from here:  https://stackoverflow.com/questions/10355286/programmatically-mouse-click-in-another-window
+	/// Other reference: https://github.com/michaelnoonan/inputsimulator/blob/master/WindowsInput/InputBuilder.cs
 	/// </summary>
 	public class ClickOnPointTool
 	{
@@ -46,19 +47,19 @@ namespace WindowClicker
 		{
 			var oldPos = Cursor.Position;
 
-			/// get screen coordinates
+			// get screen coordinates
 			//ClientToScreen(wndHandle, ref clientPoint);
 
-			/// set cursor on coords, and press mouse
+			// set cursor on coords, and press mouse
 			Cursor.Position = new Point(clientPoint.X, clientPoint.Y);
 
 			var inputMouseDown = new INPUT();
-			inputMouseDown.Type = 0; /// input type mouse
-			inputMouseDown.Data.Mouse.Flags = 0x0002; /// left button down
+			inputMouseDown.Type = 0;                        // input type mouse
+			inputMouseDown.Data.Mouse.Flags = 0x0002;       // left button down
 
 			var inputMouseUp = new INPUT();
-			inputMouseUp.Type = 0; /// input type mouse
-			inputMouseUp.Data.Mouse.Flags = 0x0004; /// left button up
+			inputMouseUp.Type = 0;                          // input type mouse
+			inputMouseUp.Data.Mouse.Flags = 0x0004;         // left button up
 
 			var inputs = new INPUT[] { inputMouseDown, inputMouseUp };
 
@@ -74,7 +75,28 @@ namespace WindowClicker
 				SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(INPUT)));
 			}
 
-			/// return mouse 
+			// return mouse to original position
+			Cursor.Position = oldPos;
+		}
+
+		public static void VerticalWheel(IntPtr wndHandle, Point clientPoint, UInt32 scrollAmount = 1)
+		{
+			var oldPos = Cursor.Position;
+
+			// Set cursor on coords
+			Cursor.Position = new Point(clientPoint.X, clientPoint.Y);
+
+			var inputVerticalScroll = new INPUT();
+
+			inputVerticalScroll.Type = 0;                        // input type mouse
+			inputVerticalScroll.Data.Mouse.Flags = 0x0800;       // Vertical Wheel
+			inputVerticalScroll.Data.Mouse.MouseData = scrollAmount;
+
+			var inputs = new INPUT[] { inputVerticalScroll };
+
+			SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(INPUT)));
+
+			// Return mouse to original position
 			Cursor.Position = oldPos;
 		}
 	}
