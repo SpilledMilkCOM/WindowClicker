@@ -165,6 +165,7 @@ namespace WindowClicker
 				UpdateActionCount();
 			}
 		}
+
 		private void cClickScreen_Click(object sender, EventArgs e)
 		{
 			if (_isStarted)
@@ -183,8 +184,8 @@ namespace WindowClicker
 
 			var singleAction = ConstructAction();
 
-			var cDetail = 0;
-			var cTotal = 0;
+			var clickDetail = 0;
+			var clickTotal = 0;
 			var progressOffset = 0;
 			var duration = 0;
 			var random = new Random();
@@ -226,7 +227,7 @@ namespace WindowClicker
 					{
 						cActionList.SelectedIndex = selectedIndex++;
 
-						ProcessAction(action, iteration, ref clicksMax, ref cTotal);
+						ProcessAction(action, iteration, ref clicksMax, ref clickTotal, ref progressOffset);
 
 						// Wait between actions
 
@@ -235,7 +236,7 @@ namespace WindowClicker
 				}
 				else
 				{
-					ProcessAction(singleAction, iteration, ref clicksMax, ref cTotal);
+					ProcessAction(singleAction, iteration, ref clicksMax, ref clickTotal, ref progressOffset);
 
 					if (iteration != iterMax)
 					{
@@ -245,12 +246,12 @@ namespace WindowClicker
 					}
 				}
 
-				clickDetail.Text = $"{duration} / {cDetail / cTotal}";
-				iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / cTotal}";
+				cClickDetail.Text = $"{duration} / {clickDetail / clickTotal}";
+				cIterationClicksDetail.Text = $"{clicksMax} / {clicksMax / clickTotal}";
 
 				Application.DoEvents();
 
-				progressOffset += clicksMax;
+				//progressOffset += clicksMax;
 			}
 
 			waiting.Text = string.Empty;
@@ -295,6 +296,7 @@ namespace WindowClicker
 				// Replace the selected action.
 
 				var selectedIndex = cActionList.SelectedIndex;
+				action.Name = (cActionList.SelectedItem as ProcessAction)?.Name;
 
 				cActionList.Items.RemoveAt(selectedIndex);
 				cActionList.Items.Insert(selectedIndex, action);
@@ -364,7 +366,7 @@ namespace WindowClicker
 					_lastDurations.Add(duration);
 
 					clickMax.Text = _lastDurations.Max().TotalMilliseconds.ToString("N0");
-					clickDetail.Text = $"{duration.TotalMilliseconds:N0} / {_lastDurations.Average(item => item.TotalMilliseconds):N0}";
+					cClickDetail.Text = $"{duration.TotalMilliseconds:N0} / {_lastDurations.Average(item => item.TotalMilliseconds):N0}";
 				}
 
 				iterationClicksMin.Text = _testClicks.ToString("N0");
@@ -405,12 +407,11 @@ namespace WindowClicker
 			MessageBox.Show(ex.Message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
 		}
 
-		private void ProcessAction(ProcessAction action, int iter, ref int clicksMax, ref int totClicks)
+		private void ProcessAction(ProcessAction action, int iter, ref int clicksMax, ref int totClicks, ref int progressOffset)
 		{
 			var x = action.Location.X - action.ClickRadius;     // Shift by radius
 			var y = action.Location.Y - action.ClickRadius;     // Shift by radius
-			var cDetail = 0;
-			var progressOffset = 0;
+			var clickDetail = 0;
 			var diameter = action.ClickRadius * 2;
 			var iterClicksMin = action.ClicksRange.Min;
 			var iterClicksMax = action.ClicksRange.Max;
@@ -443,13 +444,20 @@ namespace WindowClicker
 				{
 					stopWatch.Restart();
 
-					// Randomize the point around the radius.
+					if (action.ActionType == "ButtonClick")
+					{
+						// Randomize the point around the radius.
 
-					ClickOnPointTool.ClickOnPoint(Handle, new Point(random.Next(x, x + diameter), random.Next(y, y + diameter)));
+						ClickOnPointTool.ClickOnPoint(Handle, new Point(random.Next(x, x + diameter), random.Next(y, y + diameter)));
+					}
+					else
+					{
+						ClickOnPointTool.VerticalWheel(Handle, new Point(x + action.ClickRadius, y + action.ClickRadius), 5);
+					}
 
 					duration = random.Next(action.ClickRange.Min, action.ClickRange.Max);
 
-					cDetail += duration;
+					clickDetail += duration;
 					totClicks++;
 
 					var elapsedMS = DateTime.Now.Subtract(timeStarted).TotalMilliseconds;
@@ -462,8 +470,8 @@ namespace WindowClicker
 
 					elapsedTime.Text = new TimeSpan(0, 0, 0, 0, (int)elapsedMS).ToString(TIMESPAN_FORMAT);
 					estimatedRemaining.Text = new TimeSpan(0, 0, 0, 0, (int)((double)elapsedMS / (progressOffset + click + 1) * ((iterMax - iter) * (iterClicksMin + iterClicksMax) / 2 + clicksMax - click))).ToString(TIMESPAN_FORMAT);
-					clickDetail.Text = $"{duration} / {cDetail / totClicks}";
-					iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / clicksMax}";
+					cClickDetail.Text = $"{duration} / {clickDetail / click}";
+					cIterationClicksDetail.Text = $"{click} / {clicksMax}";
 
 					if (iterMax > 1)
 					{
@@ -489,8 +497,9 @@ namespace WindowClicker
 				}
 			}
 
-			clickDetail.Text = $"{duration} / {cDetail / totClicks}";
-			iterationClicksDetail.Text = $"{clicksMax} / {clicksMax / totClicks}";
+			cIterationClicksDetail.Text = $"{clicksMax} / {clicksMax} / {clicksMax / totClicks}";
+
+			progressOffset += clicksMax;
 		}
 
 		private void Swap<T>(ref T lhs, ref T rhs)

@@ -55,8 +55,8 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.label11 = new System.Windows.Forms.Label();
 			this.elapsedTime = new System.Windows.Forms.Label();
-			this.clickDetail = new System.Windows.Forms.Label();
-			this.iterationClicksDetail = new System.Windows.Forms.Label();
+			this.cClickDetail = new System.Windows.Forms.Label();
+			this.cIterationClicksDetail = new System.Windows.Forms.Label();
 			this.waiting = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.totalClicks = new System.Windows.Forms.Label();
@@ -320,23 +320,23 @@
 			this.elapsedTime.TabIndex = 46;
 			this.elapsedTime.Text = "0:00:0.00";
 			// 
-			// clickDetail
+			// cClickDetail
 			// 
-			this.clickDetail.AutoSize = true;
-			this.clickDetail.Location = new System.Drawing.Point(247, 106);
-			this.clickDetail.Name = "clickDetail";
-			this.clickDetail.Size = new System.Drawing.Size(24, 13);
-			this.clickDetail.TabIndex = 47;
-			this.clickDetail.Text = "0/0";
+			this.cClickDetail.AutoSize = true;
+			this.cClickDetail.Location = new System.Drawing.Point(247, 106);
+			this.cClickDetail.Name = "cClickDetail";
+			this.cClickDetail.Size = new System.Drawing.Size(24, 13);
+			this.cClickDetail.TabIndex = 47;
+			this.cClickDetail.Text = "0/0";
 			// 
-			// iterationClicksDetail
+			// cIterationClicksDetail
 			// 
-			this.iterationClicksDetail.AutoSize = true;
-			this.iterationClicksDetail.Location = new System.Drawing.Point(247, 80);
-			this.iterationClicksDetail.Name = "iterationClicksDetail";
-			this.iterationClicksDetail.Size = new System.Drawing.Size(24, 13);
-			this.iterationClicksDetail.TabIndex = 48;
-			this.iterationClicksDetail.Text = "0/0";
+			this.cIterationClicksDetail.AutoSize = true;
+			this.cIterationClicksDetail.Location = new System.Drawing.Point(247, 80);
+			this.cIterationClicksDetail.Name = "cIterationClicksDetail";
+			this.cIterationClicksDetail.Size = new System.Drawing.Size(24, 13);
+			this.cIterationClicksDetail.TabIndex = 48;
+			this.cIterationClicksDetail.Text = "0/0";
 			// 
 			// waiting
 			// 
@@ -502,8 +502,8 @@
 			this.Controls.Add(this.totalClicks);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.waiting);
-			this.Controls.Add(this.iterationClicksDetail);
-			this.Controls.Add(this.clickDetail);
+			this.Controls.Add(this.cIterationClicksDetail);
+			this.Controls.Add(this.cClickDetail);
 			this.Controls.Add(this.elapsedTime);
 			this.Controls.Add(this.label11);
 			this.Controls.Add(this.estimatedRemaining);
@@ -570,8 +570,8 @@
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label label11;
 		private System.Windows.Forms.Label elapsedTime;
-		private System.Windows.Forms.Label clickDetail;
-		private System.Windows.Forms.Label iterationClicksDetail;
+		private System.Windows.Forms.Label cClickDetail;
+		private System.Windows.Forms.Label cIterationClicksDetail;
 		private System.Windows.Forms.Label waiting;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label totalClicks;
