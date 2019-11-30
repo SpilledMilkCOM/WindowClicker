@@ -17,12 +17,12 @@ namespace WindowClicker
 		private const int MAX_DURATIONS_SAMPLE = 10;
 		private const string TIMESPAN_FORMAT = "hh\\:mm\\:ss";
 
-		bool _isStarted;
-		DateTime? _lastClickTime;
-		List<TimeSpan> _lastDurations;
-		TimeSpan _minDuration;
-		DateTime _startClickTime;
-		int _testClicks;
+		private bool _isStarted;
+		private DateTime? _lastClickTime;
+		private List<TimeSpan> _lastDurations;
+		private TimeSpan _minDuration;
+		private bool _skipAction;
+		private int _testClicks;
 
 		public MainForm()
 		{
@@ -57,15 +57,8 @@ namespace WindowClicker
 
 					var serializer = new DataContractJsonSerializer(typeof(List<ProcessAction>));
 
-					//var jsonText = File.ReadAllText(cOpenFileDialog.FileName);
-
-					//jsonText = jsonText.Replace("\n", string.Empty).Replace("	", string.Empty);
-
-					//using (var stream = new MemoryStream())
 					using (var stream = File.OpenRead(cOpenFileDialog.FileName))
 					{
-						//stream.Write(Encoding.ASCII.GetBytes(jsonText), 0, jsonText.Length);
-
 						var actions = serializer.ReadObject(stream) as List<ProcessAction>;
 
 						if (actions == null)
@@ -179,6 +172,7 @@ namespace WindowClicker
 
 			cClickScreen.Text = "Cancel";
 			_isStarted = true;
+			_skipAction = false;
 
 			var iterMax = int.Parse(cIterationCount.Text);
 
@@ -287,6 +281,11 @@ namespace WindowClicker
 			}
 		}
 
+		private void cSkipAction_Click(object sender, EventArgs e)
+		{
+			_skipAction = true;
+		}
+
 		private void cUpdateAction_Click(object sender, EventArgs e)
 		{
 			if (cActionList.SelectedIndex >= 0)
@@ -341,7 +340,6 @@ namespace WindowClicker
 				{
 					// Reset if waited longer than 5 seconds.
 
-					_startClickTime = now;
 					_testClicks = 0;
 					//_maxDuration = TimeSpan.MinValue;
 					_lastDurations.Clear();
@@ -494,6 +492,12 @@ namespace WindowClicker
 					totalClicks.Text = totClicks.ToString();
 
 					WaitWhileHandlingEvents(duration - stopWatch.ElapsedMilliseconds);      // Between each click.
+
+					if (_skipAction)
+					{
+						_skipAction = false;
+						break;
+					}
 				}
 			}
 

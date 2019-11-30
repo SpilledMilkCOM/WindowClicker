@@ -74,6 +74,7 @@
 			this.cOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.cDeleteAction = new System.Windows.Forms.Button();
 			this.cActionCount = new System.Windows.Forms.Label();
+			this.cSkipAction = new System.Windows.Forms.Button();
 			this.screenClickPanel.SuspendLayout();
 			this.cMainMenu.SuspendLayout();
 			this.SuspendLayout();
@@ -488,11 +489,22 @@
 			this.cActionCount.TabIndex = 58;
 			this.cActionCount.Text = "cActionCount";
 			// 
+			// cSkipAction
+			// 
+			this.cSkipAction.Location = new System.Drawing.Point(423, 249);
+			this.cSkipAction.Name = "cSkipAction";
+			this.cSkipAction.Size = new System.Drawing.Size(53, 23);
+			this.cSkipAction.TabIndex = 59;
+			this.cSkipAction.Text = "Skip >";
+			this.cSkipAction.UseVisualStyleBackColor = true;
+			this.cSkipAction.Click += new System.EventHandler(this.cSkipAction_Click);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(608, 377);
+			this.Controls.Add(this.cSkipAction);
 			this.Controls.Add(this.cActionCount);
 			this.Controls.Add(this.cDeleteAction);
 			this.Controls.Add(this.cUpdateAction);
@@ -589,5 +601,6 @@
 		private System.Windows.Forms.OpenFileDialog cOpenFileDialog;
 		private System.Windows.Forms.Button cDeleteAction;
 		private System.Windows.Forms.Label cActionCount;
+		private System.Windows.Forms.Button cSkipAction;
 	}
 }
