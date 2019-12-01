@@ -14,6 +14,7 @@ namespace WindowClicker
 {
 	public partial class MainForm : Form
 	{
+		private const int CONTROL_MARGIN = 5;
 		private const int MAX_DURATIONS_SAMPLE = 10;
 		private const string TIMESPAN_FORMAT = "hh\\:mm\\:ss";
 
@@ -36,6 +37,7 @@ namespace WindowClicker
 
 		private void MainForm_Load(object sender, EventArgs e)
 		{
+			cStatus.Text = string.Empty;
 		}
 
 		//----==== MENUS ====----------------------------------------------------------------------------
@@ -78,6 +80,8 @@ namespace WindowClicker
 						UpdateActionCount();
 					}
 				}
+
+				cStatus.Text = $"Loaded: {Path.GetFileName(cOpenFileDialog.FileName)}";
 			}
 			catch (Exception ex)
 			{
@@ -106,6 +110,8 @@ namespace WindowClicker
 
 					serializer.WriteObject(fileStream, actions);
 				}
+
+				cStatus.Text = $"Saved: {Path.GetFileName(cSaveFileDialog.FileName)}";
 			}
 		}
 
@@ -184,8 +190,8 @@ namespace WindowClicker
 			var duration = 0;
 			var random = new Random();
 
-			progressBar.Minimum = 0;
-			progressBar.Maximum = 0;
+			cProgressBar.Minimum = 0;
+			cProgressBar.Maximum = 0;
 
 			// Initial maximum is based on the iterations * the average of the number of clicks (not really time based)
 
@@ -193,14 +199,14 @@ namespace WindowClicker
 			{
 				foreach (ProcessAction action in cActionList.Items)
 				{
-					progressBar.Maximum += (action.ClicksRange.Min + action.ClicksRange.Max) / 2;
+					cProgressBar.Maximum += (action.ClicksRange.Min + action.ClicksRange.Max) / 2;
 				}
 
-				progressBar.Maximum *= iterMax;
+				cProgressBar.Maximum *= iterMax;
 			}
 			else
 			{
-				progressBar.Maximum = iterMax * (singleAction.ClicksRange.Min + singleAction.ClicksRange.Max) / 2;
+				cProgressBar.Maximum = iterMax * (singleAction.ClicksRange.Min + singleAction.ClicksRange.Max) / 2;
 			}
 
 			for (int iteration = 1; iteration <= iterMax && _isStarted; iteration++)
@@ -250,7 +256,7 @@ namespace WindowClicker
 
 			waiting.Text = string.Empty;
 
-			progressBar.Value = 0;      // Turn "off"
+			cProgressBar.Value = 0;      // Turn "off"
 			_isStarted = false;
 			cClickScreen.Text = "Click Screen";
 		}
@@ -318,6 +324,16 @@ namespace WindowClicker
 			var duration = new TimeSpan(0, 0, 0, 0, estimatedMilliseconds);
 
 			estimatedTime.Text = duration.ToString(TIMESPAN_FORMAT);
+		}
+
+		private void MainForm_Resize(object sender, EventArgs e)
+		{
+			// "Dock" botton controls
+
+			var bottom = ClientSize.Height - cStatusStrip.Size.Height - CONTROL_MARGIN;
+
+			cActionList.Size = new Size(cActionList.Size.Width, bottom - cActionList.Location.Y);
+			cClickScreen.Location = new Point(cClickScreen.Location.X, bottom - cClickScreen.Size.Height);
 		}
 
 		private void screenClickPanel_MouseClick(object sender, MouseEventArgs e)
@@ -460,11 +476,11 @@ namespace WindowClicker
 
 					var elapsedMS = DateTime.Now.Subtract(timeStarted).TotalMilliseconds;
 
-					if (progressOffset + click > progressBar.Maximum)
+					if (progressOffset + click > cProgressBar.Maximum)
 					{
-						progressBar.Maximum = progressOffset + click + 10;
+						cProgressBar.Maximum = progressOffset + click + 10;
 					}
-					progressBar.Value = progressOffset + click;
+					cProgressBar.Value = progressOffset + click;
 
 					elapsedTime.Text = new TimeSpan(0, 0, 0, 0, (int)elapsedMS).ToString(TIMESPAN_FORMAT);
 					estimatedRemaining.Text = new TimeSpan(0, 0, 0, 0, (int)((double)elapsedMS / (progressOffset + click + 1) * ((iterMax - iter) * (iterClicksMin + iterClicksMax) / 2 + clicksMax - click))).ToString(TIMESPAN_FORMAT);
@@ -543,5 +559,6 @@ namespace WindowClicker
 
 			//waiting.Text = string.Empty;
 		}
+
 	}
 }

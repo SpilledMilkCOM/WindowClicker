@@ -33,7 +33,6 @@
 			this.screenY = new System.Windows.Forms.Label();
 			this.screenX = new System.Windows.Forms.Label();
 			this.cClickScreen = new System.Windows.Forms.Button();
-			this.progressBar = new System.Windows.Forms.ProgressBar();
 			this.iterationClicksLbl = new System.Windows.Forms.Label();
 			this.iterationClicksMin = new System.Windows.Forms.TextBox();
 			this.iterationClicksMax = new System.Windows.Forms.TextBox();
@@ -75,8 +74,12 @@
 			this.cDeleteAction = new System.Windows.Forms.Button();
 			this.cActionCount = new System.Windows.Forms.Label();
 			this.cSkipAction = new System.Windows.Forms.Button();
+			this.cStatusStrip = new System.Windows.Forms.StatusStrip();
+			this.cStatus = new System.Windows.Forms.ToolStripStatusLabel();
+			this.cProgressBar = new System.Windows.Forms.ToolStripProgressBar();
 			this.screenClickPanel.SuspendLayout();
 			this.cMainMenu.SuspendLayout();
+			this.cStatusStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// label4
@@ -125,14 +128,6 @@
 			this.cClickScreen.Text = "Click Screen";
 			this.cClickScreen.UseVisualStyleBackColor = true;
 			this.cClickScreen.Click += new System.EventHandler(this.cClickScreen_Click);
-			// 
-			// progressBar
-			// 
-			this.progressBar.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.progressBar.Location = new System.Drawing.Point(0, 363);
-			this.progressBar.Name = "progressBar";
-			this.progressBar.Size = new System.Drawing.Size(608, 14);
-			this.progressBar.TabIndex = 13;
 			// 
 			// iterationClicksLbl
 			// 
@@ -499,11 +494,36 @@
 			this.cSkipAction.UseVisualStyleBackColor = true;
 			this.cSkipAction.Click += new System.EventHandler(this.cSkipAction_Click);
 			// 
+			// cStatusStrip
+			// 
+			this.cStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cStatus,
+            this.cProgressBar});
+			this.cStatusStrip.Location = new System.Drawing.Point(0, 362);
+			this.cStatusStrip.Name = "cStatusStrip";
+			this.cStatusStrip.Size = new System.Drawing.Size(608, 22);
+			this.cStatusStrip.TabIndex = 60;
+			this.cStatusStrip.Text = "statusStrip1";
+			// 
+			// cStatus
+			// 
+			this.cStatus.Name = "cStatus";
+			this.cStatus.Size = new System.Drawing.Size(410, 17);
+			this.cStatus.Spring = true;
+			this.cStatus.Text = "cStatus";
+			// 
+			// cProgressBar
+			// 
+			this.cProgressBar.Name = "cProgressBar";
+			this.cProgressBar.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
+			this.cProgressBar.Size = new System.Drawing.Size(150, 16);
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(608, 377);
+			this.ClientSize = new System.Drawing.Size(608, 384);
+			this.Controls.Add(this.cStatusStrip);
 			this.Controls.Add(this.cSkipAction);
 			this.Controls.Add(this.cActionCount);
 			this.Controls.Add(this.cDeleteAction);
@@ -537,7 +557,6 @@
 			this.Controls.Add(this.iterationClicksMax);
 			this.Controls.Add(this.iterationClicksMin);
 			this.Controls.Add(this.iterationClicksLbl);
-			this.Controls.Add(this.progressBar);
 			this.Controls.Add(this.cClickScreen);
 			this.Controls.Add(this.cMainMenu);
 			this.MainMenuStrip = this.cMainMenu;
@@ -545,10 +564,13 @@
 			this.Opacity = 0.8D;
 			this.Text = "Window Clicker";
 			this.Load += new System.EventHandler(this.MainForm_Load);
+			this.Resize += new System.EventHandler(this.MainForm_Resize);
 			this.screenClickPanel.ResumeLayout(false);
 			this.screenClickPanel.PerformLayout();
 			this.cMainMenu.ResumeLayout(false);
 			this.cMainMenu.PerformLayout();
+			this.cStatusStrip.ResumeLayout(false);
+			this.cStatusStrip.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -560,7 +582,6 @@
 		private System.Windows.Forms.Label screenY;
 		private System.Windows.Forms.Label screenX;
 		private System.Windows.Forms.Button cClickScreen;
-		private System.Windows.Forms.ProgressBar progressBar;
 		private System.Windows.Forms.Label iterationClicksLbl;
 		private System.Windows.Forms.TextBox iterationClicksMin;
 		private System.Windows.Forms.TextBox iterationClicksMax;
@@ -602,5 +623,8 @@
 		private System.Windows.Forms.Button cDeleteAction;
 		private System.Windows.Forms.Label cActionCount;
 		private System.Windows.Forms.Button cSkipAction;
+		private System.Windows.Forms.StatusStrip cStatusStrip;
+		private System.Windows.Forms.ToolStripStatusLabel cStatus;
+		private System.Windows.Forms.ToolStripProgressBar cProgressBar;
 	}
 }
