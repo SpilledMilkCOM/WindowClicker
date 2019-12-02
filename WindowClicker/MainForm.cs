@@ -209,6 +209,11 @@ namespace WindowClicker
 				cProgressBar.Maximum = iterMax * (singleAction.ClicksRange.Min + singleAction.ClicksRange.Max) / 2;
 			}
 
+			if (cSavePosition.Checked)
+			{
+				Thread.Sleep(500);
+			}
+
 			for (int iteration = 1; iteration <= iterMax && _isStarted; iteration++)
 			{
 				var clicksMax = 0;
@@ -283,6 +288,8 @@ namespace WindowClicker
 					cActionList.SelectedIndex = selectedIndex;
 				}
 
+				saveToolStripMenuItem.Enabled = true;
+
 				UpdateActionCount();
 			}
 		}
@@ -306,6 +313,8 @@ namespace WindowClicker
 				cActionList.Items.RemoveAt(selectedIndex);
 				cActionList.Items.Insert(selectedIndex, action);
 				cActionList.SelectedIndex = selectedIndex;          // Select updated item. (removal and insert deselects selected item).
+
+				saveToolStripMenuItem.Enabled = true;
 			}
 		}
 
@@ -445,7 +454,7 @@ namespace WindowClicker
 			{
 				// NO delay between clicks!!
 
-				ClickOnPointTool.ClickOnPoint(Handle, new Point(random.Next(x, x + diameter), random.Next(y, y + diameter)), clicksMax);
+				ClickOnPointTool.ClickOnPoint(Handle, new Point(random.Next(x, x + diameter), random.Next(y, y + diameter)), cSavePosition.Checked, clicksMax);
 			}
 			else
 			{
@@ -462,7 +471,7 @@ namespace WindowClicker
 					{
 						// Randomize the point around the radius.
 
-						ClickOnPointTool.ClickOnPoint(Handle, new Point(random.Next(x, x + diameter), random.Next(y, y + diameter)));
+						ClickOnPointTool.ClickOnPoint(Handle, new Point(random.Next(x, x + diameter), random.Next(y, y + diameter)), cSavePosition.Checked);
 					}
 					else
 					{

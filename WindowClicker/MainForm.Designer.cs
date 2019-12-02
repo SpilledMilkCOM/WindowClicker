@@ -77,6 +77,7 @@
 			this.cStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.cStatus = new System.Windows.Forms.ToolStripStatusLabel();
 			this.cProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+			this.cSavePosition = new System.Windows.Forms.CheckBox();
 			this.screenClickPanel.SuspendLayout();
 			this.cMainMenu.SuspendLayout();
 			this.cStatusStrip.SuspendLayout();
@@ -176,6 +177,7 @@
 			// screenClickPanel
 			// 
 			this.screenClickPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.screenClickPanel.Controls.Add(this.cSavePosition);
 			this.screenClickPanel.Controls.Add(this.label5);
 			this.screenClickPanel.Controls.Add(this.screenX);
 			this.screenClickPanel.Controls.Add(this.screenY);
@@ -511,12 +513,25 @@
 			this.cStatus.Size = new System.Drawing.Size(410, 17);
 			this.cStatus.Spring = true;
 			this.cStatus.Text = "cStatus";
+			this.cStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// cProgressBar
 			// 
 			this.cProgressBar.Name = "cProgressBar";
 			this.cProgressBar.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
 			this.cProgressBar.Size = new System.Drawing.Size(150, 16);
+			// 
+			// cSavePosition
+			// 
+			this.cSavePosition.AutoSize = true;
+			this.cSavePosition.Checked = true;
+			this.cSavePosition.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cSavePosition.Location = new System.Drawing.Point(3, 86);
+			this.cSavePosition.Name = "cSavePosition";
+			this.cSavePosition.Size = new System.Drawing.Size(91, 17);
+			this.cSavePosition.TabIndex = 55;
+			this.cSavePosition.Text = "Save Position";
+			this.cSavePosition.UseVisualStyleBackColor = true;
 			// 
 			// MainForm
 			// 
@@ -626,5 +641,6 @@
 		private System.Windows.Forms.StatusStrip cStatusStrip;
 		private System.Windows.Forms.ToolStripStatusLabel cStatus;
 		private System.Windows.Forms.ToolStripProgressBar cProgressBar;
+		private System.Windows.Forms.CheckBox cSavePosition;
 	}
 }
