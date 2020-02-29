@@ -22,5 +22,10 @@ namespace WindowClicked
 
 			// TODO: Set a timer to erase this point in a few seconds.
 		}
+
+		private void hScrollBar1_ValueChanged(object sender, System.EventArgs e)
+		{
+			Opacity = (double)hScrollBar1.Value / hScrollBar1.Maximum;
+		}
 	}
 }

@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.listBox1 = new System.Windows.Forms.ListBox();
+			this.hScrollBar1 = new System.Windows.Forms.HScrollBar();
 			this.SuspendLayout();
 			// 
 			// listBox1
@@ -39,11 +40,21 @@
 			this.listBox1.Size = new System.Drawing.Size(310, 147);
 			this.listBox1.TabIndex = 0;
 			// 
+			// hScrollBar1
+			// 
+			this.hScrollBar1.Location = new System.Drawing.Point(12, 174);
+			this.hScrollBar1.Name = "hScrollBar1";
+			this.hScrollBar1.Size = new System.Drawing.Size(310, 20);
+			this.hScrollBar1.TabIndex = 1;
+			this.hScrollBar1.Value = 100;
+			this.hScrollBar1.ValueChanged += new System.EventHandler(this.hScrollBar1_ValueChanged);
+			// 
 			// MainTest
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.hScrollBar1);
 			this.Controls.Add(this.listBox1);
 			this.Name = "MainTest";
 			this.Text = "Window Clicked";
@@ -55,6 +66,7 @@
 		#endregion
 
 		private System.Windows.Forms.ListBox listBox1;
+		private System.Windows.Forms.HScrollBar hScrollBar1;
 	}
 }
 
