@@ -74,7 +74,6 @@ namespace WindowClicker
 		public static void ClickOnPoint(IntPtr wndHandle, Point clientPoint, bool savePosition = true, int numberOfClicks = 1)
 		{
 			var oldPos = Cursor.Position;
-			var delay = true;
 
 			// get screen coordinates
 			//ClientToScreen(wndHandle, ref clientPoint);
@@ -83,22 +82,14 @@ namespace WindowClicker
 			Cursor.Position = new Point(clientPoint.X, clientPoint.Y);
 			//SetCursorPos(clientPoint.X, clientPoint.Y);
 
-			//if (delay)
-			//{
-			//	Thread.Sleep(50);
-			//}
 
 			var inputMouseDown = new INPUT();
 			inputMouseDown.Type = (uint)SendInputEventType.InputMouse;
-			inputMouseDown.Data.Mouse.Flags = (uint)(MouseEventFlags.MOUSEEVENTF_LEFTDOWN | MouseEventFlags.MOUSEEVENTF_ABSOLUTE);
-			inputMouseDown.Data.Mouse.X = clientPoint.X;
-			inputMouseDown.Data.Mouse.Y = clientPoint.Y;
+			inputMouseDown.Data.Mouse.Flags = (uint)(MouseEventFlags.MOUSEEVENTF_LEFTDOWN);
 
 			var inputMouseUp = new INPUT();
 			inputMouseUp.Type = (uint)SendInputEventType.InputMouse;
-			inputMouseUp.Data.Mouse.Flags = (uint)(MouseEventFlags.MOUSEEVENTF_LEFTUP | MouseEventFlags.MOUSEEVENTF_ABSOLUTE);
-			inputMouseUp.Data.Mouse.X = clientPoint.X;
-			inputMouseUp.Data.Mouse.Y = clientPoint.Y;
+			inputMouseUp.Data.Mouse.Flags = (uint)(MouseEventFlags.MOUSEEVENTF_LEFTUP);
 
 			var inputs = new INPUT[] { inputMouseDown, inputMouseUp };
 
@@ -111,7 +102,11 @@ namespace WindowClicker
 			}
 			else
 			{
-				if (delay)
+				if (savePosition)
+				{
+					SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(INPUT)));
+				}
+				else
 				{
 					var mouseInput = new INPUT();
 					mouseInput.Type = (uint)SendInputEventType.InputMouse;
@@ -141,10 +136,6 @@ namespace WindowClicker
 					mouseInput.Data.Mouse.Flags = (uint)(MouseEventFlags.MOUSEEVENTF_LEFTUP);
 
 					SendInput((uint)inputs.Length, input, Marshal.SizeOf(typeof(INPUT)));
-				}
-				else
-				{
-					SendInput((uint)inputs.Length, inputs, Marshal.SizeOf(typeof(INPUT)));
 				}
 			}
 
