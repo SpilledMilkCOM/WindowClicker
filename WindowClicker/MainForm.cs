@@ -99,7 +99,9 @@ namespace WindowClicker
 
 				var serializer = new DataContractJsonSerializer(typeof(List<ProcessAction>));
 
-				using (var fileStream = File.OpenWrite(cSaveFileDialog.FileName))
+				// Use File Mode Create to wipe the contents of an existing file.
+
+				using (var fileStream = File.Open(cSaveFileDialog.FileName, FileMode.Create))
 				{
 					var actions = new List<ProcessAction>();
 
