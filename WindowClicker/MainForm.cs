@@ -182,6 +182,9 @@ namespace WindowClicker
 			_isStarted = true;
 			_skipAction = false;
 
+			currentLabel.Visible = _isStarted;
+			currentIteration.Visible = _isStarted;
+
 			var iterMax = int.Parse(cIterationCount.Text);
 
 			var singleAction = ConstructAction();
@@ -220,6 +223,8 @@ namespace WindowClicker
 			{
 				var clicksMax = 0;
 
+				currentIteration.Text = iteration.ToString();
+
 				if (cUseActions.Checked)
 				{
 					var selectedIndex = 0;
@@ -239,6 +244,13 @@ namespace WindowClicker
 						// Wait between actions
 
 						WaitWhileHandlingEvents(random.Next(action.DelayRange.Min, action.DelayRange.Max));
+
+						// If "skip" is clicked within Process or Wait, then reset it here.
+
+						if (_skipAction)
+						{
+							_skipAction = false;
+						}
 					}
 				}
 				else
@@ -266,6 +278,9 @@ namespace WindowClicker
 			cProgressBar.Value = 0;      // Turn "off"
 			_isStarted = false;
 			cClickScreen.Text = "Click Screen";
+
+			currentLabel.Visible = _isStarted;
+			currentIteration.Visible = _isStarted;
 		}
 
 		private void cDeleteAction_Click(object sender, EventArgs e)
@@ -519,12 +534,6 @@ namespace WindowClicker
 					totalClicks.Text = totClicks.ToString();
 
 					WaitWhileHandlingEvents(duration - stopWatch.ElapsedMilliseconds);      // Between each click.
-
-					if (_skipAction)
-					{
-						_skipAction = false;
-						break;
-					}
 				}
 			}
 
@@ -549,7 +558,7 @@ namespace WindowClicker
 		{
 			const int WAIT_DURATION = 500;
 
-			while (milliseconds > 0 && _isStarted)
+			while (milliseconds > 0 && _isStarted && !_skipAction)
 			{
 				if (milliseconds < WAIT_DURATION)
 				{

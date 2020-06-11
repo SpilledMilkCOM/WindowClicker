@@ -39,6 +39,7 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.cClickRadius = new System.Windows.Forms.TextBox();
 			this.screenClickPanel = new System.Windows.Forms.Panel();
+			this.cSavePosition = new System.Windows.Forms.CheckBox();
 			this.label10 = new System.Windows.Forms.Label();
 			this.estimatedRemaining = new System.Windows.Forms.Label();
 			this.estimatedTime = new System.Windows.Forms.Label();
@@ -77,7 +78,8 @@
 			this.cStatusStrip = new System.Windows.Forms.StatusStrip();
 			this.cStatus = new System.Windows.Forms.ToolStripStatusLabel();
 			this.cProgressBar = new System.Windows.Forms.ToolStripProgressBar();
-			this.cSavePosition = new System.Windows.Forms.CheckBox();
+			this.currentLabel = new System.Windows.Forms.Label();
+			this.currentIteration = new System.Windows.Forms.Label();
 			this.screenClickPanel.SuspendLayout();
 			this.cMainMenu.SuspendLayout();
 			this.cStatusStrip.SuspendLayout();
@@ -187,6 +189,18 @@
 			this.screenClickPanel.Size = new System.Drawing.Size(171, 108);
 			this.screenClickPanel.TabIndex = 27;
 			this.screenClickPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.screenClickPanel_MouseClick);
+			// 
+			// cSavePosition
+			// 
+			this.cSavePosition.AutoSize = true;
+			this.cSavePosition.Checked = true;
+			this.cSavePosition.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.cSavePosition.Location = new System.Drawing.Point(3, 86);
+			this.cSavePosition.Name = "cSavePosition";
+			this.cSavePosition.Size = new System.Drawing.Size(91, 17);
+			this.cSavePosition.TabIndex = 55;
+			this.cSavePosition.Text = "Save Position";
+			this.cSavePosition.UseVisualStyleBackColor = true;
 			// 
 			// label10
 			// 
@@ -510,7 +524,7 @@
 			// cStatus
 			// 
 			this.cStatus.Name = "cStatus";
-			this.cStatus.Size = new System.Drawing.Size(410, 17);
+			this.cStatus.Size = new System.Drawing.Size(441, 17);
 			this.cStatus.Spring = true;
 			this.cStatus.Text = "cStatus";
 			this.cStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -521,23 +535,35 @@
 			this.cProgressBar.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
 			this.cProgressBar.Size = new System.Drawing.Size(150, 16);
 			// 
-			// cSavePosition
+			// currentLabel
 			// 
-			this.cSavePosition.AutoSize = true;
-			this.cSavePosition.Checked = true;
-			this.cSavePosition.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.cSavePosition.Location = new System.Drawing.Point(3, 86);
-			this.cSavePosition.Name = "cSavePosition";
-			this.cSavePosition.Size = new System.Drawing.Size(91, 17);
-			this.cSavePosition.TabIndex = 55;
-			this.cSavePosition.Text = "Save Position";
-			this.cSavePosition.UseVisualStyleBackColor = true;
+			this.currentLabel.AutoSize = true;
+			this.currentLabel.ForeColor = System.Drawing.SystemColors.Highlight;
+			this.currentLabel.Location = new System.Drawing.Point(12, 56);
+			this.currentLabel.Name = "currentLabel";
+			this.currentLabel.Size = new System.Drawing.Size(44, 13);
+			this.currentLabel.TabIndex = 61;
+			this.currentLabel.Text = "Current:";
+			this.currentLabel.Visible = false;
+			// 
+			// currentIteration
+			// 
+			this.currentIteration.AutoSize = true;
+			this.currentIteration.ForeColor = System.Drawing.SystemColors.Highlight;
+			this.currentIteration.Location = new System.Drawing.Point(71, 56);
+			this.currentIteration.Name = "currentIteration";
+			this.currentIteration.Size = new System.Drawing.Size(78, 13);
+			this.currentIteration.TabIndex = 62;
+			this.currentIteration.Text = "currentIteration";
+			this.currentIteration.Visible = false;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(608, 384);
+			this.Controls.Add(this.currentIteration);
+			this.Controls.Add(this.currentLabel);
 			this.Controls.Add(this.cStatusStrip);
 			this.Controls.Add(this.cSkipAction);
 			this.Controls.Add(this.cActionCount);
@@ -642,5 +668,7 @@
 		private System.Windows.Forms.ToolStripStatusLabel cStatus;
 		private System.Windows.Forms.ToolStripProgressBar cProgressBar;
 		private System.Windows.Forms.CheckBox cSavePosition;
+		private System.Windows.Forms.Label currentLabel;
+		private System.Windows.Forms.Label currentIteration;
 	}
 }
