@@ -44,7 +44,6 @@
 			this.estimatedRemaining = new System.Windows.Forms.Label();
 			this.estimatedTime = new System.Windows.Forms.Label();
 			this.label9 = new System.Windows.Forms.Label();
-			this.testClickPanel = new System.Windows.Forms.Panel();
 			this.cIterationCount = new System.Windows.Forms.TextBox();
 			this.label8 = new System.Windows.Forms.Label();
 			this.cWaitMax = new System.Windows.Forms.TextBox();
@@ -88,7 +87,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(18, 20);
+			this.label4.Location = new System.Drawing.Point(3, 19);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(80, 13);
 			this.label4.TabIndex = 8;
@@ -97,7 +96,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(18, 6);
+			this.label5.Location = new System.Drawing.Point(3, 5);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(80, 13);
 			this.label5.TabIndex = 7;
@@ -106,7 +105,7 @@
 			// screenY
 			// 
 			this.screenY.AutoSize = true;
-			this.screenY.Location = new System.Drawing.Point(104, 20);
+			this.screenY.Location = new System.Drawing.Point(89, 19);
 			this.screenY.Name = "screenY";
 			this.screenY.Size = new System.Drawing.Size(46, 13);
 			this.screenY.TabIndex = 6;
@@ -115,7 +114,7 @@
 			// screenX
 			// 
 			this.screenX.AutoSize = true;
-			this.screenX.Location = new System.Drawing.Point(104, 6);
+			this.screenX.Location = new System.Drawing.Point(89, 5);
 			this.screenX.Name = "screenX";
 			this.screenX.Size = new System.Drawing.Size(46, 13);
 			this.screenX.TabIndex = 5;
@@ -124,9 +123,9 @@
 			// cClickScreen
 			// 
 			this.cClickScreen.Enabled = false;
-			this.cClickScreen.Location = new System.Drawing.Point(493, 330);
+			this.cClickScreen.Location = new System.Drawing.Point(423, 304);
 			this.cClickScreen.Name = "cClickScreen";
-			this.cClickScreen.Size = new System.Drawing.Size(103, 27);
+			this.cClickScreen.Size = new System.Drawing.Size(119, 27);
 			this.cClickScreen.TabIndex = 12;
 			this.cClickScreen.Text = "Click Screen";
 			this.cClickScreen.UseVisualStyleBackColor = true;
@@ -135,7 +134,7 @@
 			// iterationClicksLbl
 			// 
 			this.iterationClicksLbl.AutoSize = true;
-			this.iterationClicksLbl.Location = new System.Drawing.Point(77, 80);
+			this.iterationClicksLbl.Location = new System.Drawing.Point(61, 95);
 			this.iterationClicksLbl.Name = "iterationClicksLbl";
 			this.iterationClicksLbl.Size = new System.Drawing.Size(38, 13);
 			this.iterationClicksLbl.TabIndex = 22;
@@ -143,7 +142,7 @@
 			// 
 			// iterationClicksMin
 			// 
-			this.iterationClicksMin.Location = new System.Drawing.Point(121, 77);
+			this.iterationClicksMin.Location = new System.Drawing.Point(105, 92);
 			this.iterationClicksMin.Name = "iterationClicksMin";
 			this.iterationClicksMin.Size = new System.Drawing.Size(56, 20);
 			this.iterationClicksMin.TabIndex = 2;
@@ -152,7 +151,7 @@
 			// 
 			// iterationClicksMax
 			// 
-			this.iterationClicksMax.Location = new System.Drawing.Point(185, 77);
+			this.iterationClicksMax.Location = new System.Drawing.Point(169, 92);
 			this.iterationClicksMax.Name = "iterationClicksMax";
 			this.iterationClicksMax.Size = new System.Drawing.Size(56, 20);
 			this.iterationClicksMax.TabIndex = 3;
@@ -162,7 +161,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(285, 138);
+			this.label1.Location = new System.Drawing.Point(367, 156);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(69, 13);
 			this.label1.TabIndex = 25;
@@ -170,7 +169,7 @@
 			// 
 			// cClickRadius
 			// 
-			this.cClickRadius.Location = new System.Drawing.Point(360, 135);
+			this.cClickRadius.Location = new System.Drawing.Point(442, 153);
 			this.cClickRadius.Name = "cClickRadius";
 			this.cClickRadius.Size = new System.Drawing.Size(56, 20);
 			this.cClickRadius.TabIndex = 1;
@@ -184,9 +183,9 @@
 			this.screenClickPanel.Controls.Add(this.screenX);
 			this.screenClickPanel.Controls.Add(this.screenY);
 			this.screenClickPanel.Controls.Add(this.label4);
-			this.screenClickPanel.Location = new System.Drawing.Point(423, 30);
+			this.screenClickPanel.Location = new System.Drawing.Point(349, 55);
 			this.screenClickPanel.Name = "screenClickPanel";
-			this.screenClickPanel.Size = new System.Drawing.Size(171, 108);
+			this.screenClickPanel.Size = new System.Drawing.Size(171, 96);
 			this.screenClickPanel.TabIndex = 27;
 			this.screenClickPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.screenClickPanel_MouseClick);
 			// 
@@ -195,7 +194,7 @@
 			this.cSavePosition.AutoSize = true;
 			this.cSavePosition.Checked = true;
 			this.cSavePosition.CheckState = System.Windows.Forms.CheckState.Checked;
-			this.cSavePosition.Location = new System.Drawing.Point(3, 86);
+			this.cSavePosition.Location = new System.Drawing.Point(6, 74);
 			this.cSavePosition.Name = "cSavePosition";
 			this.cSavePosition.Size = new System.Drawing.Size(91, 17);
 			this.cSavePosition.TabIndex = 55;
@@ -205,16 +204,16 @@
 			// label10
 			// 
 			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(2, 185);
+			this.label10.Location = new System.Drawing.Point(363, 33);
 			this.label10.Name = "label10";
-			this.label10.Size = new System.Drawing.Size(109, 13);
+			this.label10.Size = new System.Drawing.Size(60, 13);
 			this.label10.TabIndex = 31;
-			this.label10.Text = "Estimated Remaining:";
+			this.label10.Text = "Remaining:";
 			// 
 			// estimatedRemaining
 			// 
 			this.estimatedRemaining.AutoSize = true;
-			this.estimatedRemaining.Location = new System.Drawing.Point(118, 185);
+			this.estimatedRemaining.Location = new System.Drawing.Point(429, 32);
 			this.estimatedRemaining.Name = "estimatedRemaining";
 			this.estimatedRemaining.Size = new System.Drawing.Size(102, 13);
 			this.estimatedRemaining.TabIndex = 44;
@@ -223,7 +222,7 @@
 			// estimatedTime
 			// 
 			this.estimatedTime.AutoSize = true;
-			this.estimatedTime.Location = new System.Drawing.Point(118, 138);
+			this.estimatedTime.Location = new System.Drawing.Point(102, 153);
 			this.estimatedTime.Name = "estimatedTime";
 			this.estimatedTime.Size = new System.Drawing.Size(75, 13);
 			this.estimatedTime.TabIndex = 43;
@@ -232,24 +231,15 @@
 			// label9
 			// 
 			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(29, 138);
+			this.label9.Location = new System.Drawing.Point(13, 153);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(82, 13);
 			this.label9.TabIndex = 42;
 			this.label9.Text = "Estimated Time:";
 			// 
-			// testClickPanel
-			// 
-			this.testClickPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.testClickPanel.Location = new System.Drawing.Point(423, 144);
-			this.testClickPanel.Name = "testClickPanel";
-			this.testClickPanel.Size = new System.Drawing.Size(171, 52);
-			this.testClickPanel.TabIndex = 41;
-			this.testClickPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.TestClickPanel_MouseClick);
-			// 
 			// cIterationCount
 			// 
-			this.cIterationCount.Location = new System.Drawing.Point(71, 33);
+			this.cIterationCount.Location = new System.Drawing.Point(71, 55);
 			this.cIterationCount.Name = "cIterationCount";
 			this.cIterationCount.Size = new System.Drawing.Size(56, 20);
 			this.cIterationCount.TabIndex = 33;
@@ -258,7 +248,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(12, 33);
+			this.label8.Location = new System.Drawing.Point(12, 55);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(53, 13);
 			this.label8.TabIndex = 40;
@@ -266,7 +256,7 @@
 			// 
 			// cWaitMax
 			// 
-			this.cWaitMax.Location = new System.Drawing.Point(279, 33);
+			this.cWaitMax.Location = new System.Drawing.Point(279, 55);
 			this.cWaitMax.Name = "cWaitMax";
 			this.cWaitMax.Size = new System.Drawing.Size(56, 20);
 			this.cWaitMax.TabIndex = 37;
@@ -274,7 +264,7 @@
 			// 
 			// cWaitMin
 			// 
-			this.cWaitMin.Location = new System.Drawing.Point(217, 33);
+			this.cWaitMin.Location = new System.Drawing.Point(217, 55);
 			this.cWaitMin.Name = "cWaitMin";
 			this.cWaitMin.Size = new System.Drawing.Size(56, 20);
 			this.cWaitMin.TabIndex = 36;
@@ -283,7 +273,7 @@
 			// label7
 			// 
 			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(144, 36);
+			this.label7.Location = new System.Drawing.Point(144, 58);
 			this.label7.Name = "label7";
 			this.label7.Size = new System.Drawing.Size(67, 13);
 			this.label7.TabIndex = 39;
@@ -291,7 +281,7 @@
 			// 
 			// clickMax
 			// 
-			this.clickMax.Location = new System.Drawing.Point(185, 103);
+			this.clickMax.Location = new System.Drawing.Point(169, 118);
 			this.clickMax.Name = "clickMax";
 			this.clickMax.Size = new System.Drawing.Size(56, 20);
 			this.clickMax.TabIndex = 35;
@@ -299,7 +289,7 @@
 			// 
 			// clickMin
 			// 
-			this.clickMin.Location = new System.Drawing.Point(121, 103);
+			this.clickMin.Location = new System.Drawing.Point(105, 118);
 			this.clickMin.Name = "clickMin";
 			this.clickMin.Size = new System.Drawing.Size(56, 20);
 			this.clickMin.TabIndex = 34;
@@ -308,16 +298,16 @@
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(47, 106);
+			this.label6.Location = new System.Drawing.Point(40, 121);
 			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(68, 13);
+			this.label6.Size = new System.Drawing.Size(59, 13);
 			this.label6.TabIndex = 38;
-			this.label6.Text = "Click Range:";
+			this.label6.Text = "Delay (ms):";
 			// 
 			// label11
 			// 
 			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(37, 163);
+			this.label11.Location = new System.Drawing.Point(224, 33);
 			this.label11.Name = "label11";
 			this.label11.Size = new System.Drawing.Size(74, 13);
 			this.label11.TabIndex = 45;
@@ -326,7 +316,7 @@
 			// elapsedTime
 			// 
 			this.elapsedTime.AutoSize = true;
-			this.elapsedTime.Location = new System.Drawing.Point(118, 163);
+			this.elapsedTime.Location = new System.Drawing.Point(305, 33);
 			this.elapsedTime.Name = "elapsedTime";
 			this.elapsedTime.Size = new System.Drawing.Size(52, 13);
 			this.elapsedTime.TabIndex = 46;
@@ -335,7 +325,7 @@
 			// cClickDetail
 			// 
 			this.cClickDetail.AutoSize = true;
-			this.cClickDetail.Location = new System.Drawing.Point(247, 106);
+			this.cClickDetail.Location = new System.Drawing.Point(231, 121);
 			this.cClickDetail.Name = "cClickDetail";
 			this.cClickDetail.Size = new System.Drawing.Size(24, 13);
 			this.cClickDetail.TabIndex = 47;
@@ -344,7 +334,7 @@
 			// cIterationClicksDetail
 			// 
 			this.cIterationClicksDetail.AutoSize = true;
-			this.cIterationClicksDetail.Location = new System.Drawing.Point(247, 80);
+			this.cIterationClicksDetail.Location = new System.Drawing.Point(231, 95);
 			this.cIterationClicksDetail.Name = "cIterationClicksDetail";
 			this.cIterationClicksDetail.Size = new System.Drawing.Size(24, 13);
 			this.cIterationClicksDetail.TabIndex = 48;
@@ -353,7 +343,7 @@
 			// waiting
 			// 
 			this.waiting.AutoSize = true;
-			this.waiting.Location = new System.Drawing.Point(285, 184);
+			this.waiting.Location = new System.Drawing.Point(295, 95);
 			this.waiting.Name = "waiting";
 			this.waiting.Size = new System.Drawing.Size(40, 13);
 			this.waiting.TabIndex = 49;
@@ -362,7 +352,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(306, 80);
+			this.label2.Location = new System.Drawing.Point(136, 33);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(34, 13);
 			this.label2.TabIndex = 50;
@@ -371,14 +361,16 @@
 			// totalClicks
 			// 
 			this.totalClicks.AutoSize = true;
-			this.totalClicks.Location = new System.Drawing.Point(346, 80);
+			this.totalClicks.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.totalClicks.Location = new System.Drawing.Point(165, 33);
 			this.totalClicks.Name = "totalClicks";
-			this.totalClicks.Size = new System.Drawing.Size(0, 13);
+			this.totalClicks.Size = new System.Drawing.Size(32, 13);
 			this.totalClicks.TabIndex = 51;
+			this.totalClicks.Text = "total";
 			// 
 			// cAddAction
 			// 
-			this.cAddAction.Location = new System.Drawing.Point(15, 220);
+			this.cAddAction.Location = new System.Drawing.Point(246, 194);
 			this.cAddAction.Name = "cAddAction";
 			this.cAddAction.Size = new System.Drawing.Size(53, 23);
 			this.cAddAction.TabIndex = 53;
@@ -389,7 +381,7 @@
 			// cActionList
 			// 
 			this.cActionList.FormattingEnabled = true;
-			this.cActionList.Location = new System.Drawing.Point(15, 249);
+			this.cActionList.Location = new System.Drawing.Point(15, 223);
 			this.cActionList.Name = "cActionList";
 			this.cActionList.Size = new System.Drawing.Size(401, 108);
 			this.cActionList.TabIndex = 52;
@@ -399,7 +391,7 @@
 			// 
 			this.cUseActions.AutoSize = true;
 			this.cUseActions.Enabled = false;
-			this.cUseActions.Location = new System.Drawing.Point(279, 226);
+			this.cUseActions.Location = new System.Drawing.Point(15, 194);
 			this.cUseActions.Name = "cUseActions";
 			this.cUseActions.Size = new System.Drawing.Size(83, 17);
 			this.cUseActions.TabIndex = 54;
@@ -409,7 +401,7 @@
 			// cUpdateAction
 			// 
 			this.cUpdateAction.Enabled = false;
-			this.cUpdateAction.Location = new System.Drawing.Point(74, 220);
+			this.cUpdateAction.Location = new System.Drawing.Point(305, 194);
 			this.cUpdateAction.Name = "cUpdateAction";
 			this.cUpdateAction.Size = new System.Drawing.Size(53, 23);
 			this.cUpdateAction.TabIndex = 55;
@@ -423,7 +415,7 @@
             this.fileToolStripMenuItem});
 			this.cMainMenu.Location = new System.Drawing.Point(0, 0);
 			this.cMainMenu.Name = "cMainMenu";
-			this.cMainMenu.Size = new System.Drawing.Size(608, 24);
+			this.cMainMenu.Size = new System.Drawing.Size(560, 24);
 			this.cMainMenu.TabIndex = 56;
 			this.cMainMenu.Text = "menuStrip1";
 			// 
@@ -472,18 +464,18 @@
 			// 
 			this.cSaveFileDialog.DefaultExt = "txt";
 			this.cSaveFileDialog.FileName = "WindowClicker.JSON.txt";
-			this.cSaveFileDialog.InitialDirectory = "c:\\usr\\tmp";
+			this.cSaveFileDialog.InitialDirectory = "C:\\_drv\\Z\\Window Clicker";
 			// 
 			// cOpenFileDialog
 			// 
 			this.cOpenFileDialog.FileName = "WindowClicker.JSON.txt";
 			this.cOpenFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
-			this.cOpenFileDialog.InitialDirectory = "c:\\usr\\tmp";
+			this.cOpenFileDialog.InitialDirectory = "C:\\_drv\\Z\\Window Clicker";
 			// 
 			// cDeleteAction
 			// 
 			this.cDeleteAction.Enabled = false;
-			this.cDeleteAction.Location = new System.Drawing.Point(133, 220);
+			this.cDeleteAction.Location = new System.Drawing.Point(364, 194);
 			this.cDeleteAction.Name = "cDeleteAction";
 			this.cDeleteAction.Size = new System.Drawing.Size(53, 23);
 			this.cDeleteAction.TabIndex = 57;
@@ -494,7 +486,7 @@
 			// cActionCount
 			// 
 			this.cActionCount.AutoSize = true;
-			this.cActionCount.Location = new System.Drawing.Point(368, 227);
+			this.cActionCount.Location = new System.Drawing.Point(99, 194);
 			this.cActionCount.Name = "cActionCount";
 			this.cActionCount.Size = new System.Drawing.Size(71, 13);
 			this.cActionCount.TabIndex = 58;
@@ -502,7 +494,7 @@
 			// 
 			// cSkipAction
 			// 
-			this.cSkipAction.Location = new System.Drawing.Point(423, 249);
+			this.cSkipAction.Location = new System.Drawing.Point(423, 223);
 			this.cSkipAction.Name = "cSkipAction";
 			this.cSkipAction.Size = new System.Drawing.Size(53, 23);
 			this.cSkipAction.TabIndex = 59;
@@ -515,16 +507,16 @@
 			this.cStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cStatus,
             this.cProgressBar});
-			this.cStatusStrip.Location = new System.Drawing.Point(0, 362);
+			this.cStatusStrip.Location = new System.Drawing.Point(0, 337);
 			this.cStatusStrip.Name = "cStatusStrip";
-			this.cStatusStrip.Size = new System.Drawing.Size(608, 22);
+			this.cStatusStrip.Size = new System.Drawing.Size(560, 22);
 			this.cStatusStrip.TabIndex = 60;
 			this.cStatusStrip.Text = "statusStrip1";
 			// 
 			// cStatus
 			// 
 			this.cStatus.Name = "cStatus";
-			this.cStatus.Size = new System.Drawing.Size(441, 17);
+			this.cStatus.Size = new System.Drawing.Size(384, 17);
 			this.cStatus.Spring = true;
 			this.cStatus.Text = "cStatus";
 			this.cStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -539,7 +531,7 @@
 			// 
 			this.currentLabel.AutoSize = true;
 			this.currentLabel.ForeColor = System.Drawing.SystemColors.Highlight;
-			this.currentLabel.Location = new System.Drawing.Point(12, 56);
+			this.currentLabel.Location = new System.Drawing.Point(12, 33);
 			this.currentLabel.Name = "currentLabel";
 			this.currentLabel.Size = new System.Drawing.Size(44, 13);
 			this.currentLabel.TabIndex = 61;
@@ -550,7 +542,7 @@
 			// 
 			this.currentIteration.AutoSize = true;
 			this.currentIteration.ForeColor = System.Drawing.SystemColors.Highlight;
-			this.currentIteration.Location = new System.Drawing.Point(71, 56);
+			this.currentIteration.Location = new System.Drawing.Point(62, 33);
 			this.currentIteration.Name = "currentIteration";
 			this.currentIteration.Size = new System.Drawing.Size(78, 13);
 			this.currentIteration.TabIndex = 62;
@@ -561,7 +553,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(608, 384);
+			this.ClientSize = new System.Drawing.Size(560, 359);
 			this.Controls.Add(this.currentIteration);
 			this.Controls.Add(this.currentLabel);
 			this.Controls.Add(this.cStatusStrip);
@@ -582,7 +574,6 @@
 			this.Controls.Add(this.estimatedRemaining);
 			this.Controls.Add(this.estimatedTime);
 			this.Controls.Add(this.label9);
-			this.Controls.Add(this.testClickPanel);
 			this.Controls.Add(this.cIterationCount);
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.cWaitMax);
@@ -592,7 +583,6 @@
 			this.Controls.Add(this.clickMin);
 			this.Controls.Add(this.label6);
 			this.Controls.Add(this.label10);
-			this.Controls.Add(this.screenClickPanel);
 			this.Controls.Add(this.cClickRadius);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.iterationClicksMax);
@@ -600,6 +590,7 @@
 			this.Controls.Add(this.iterationClicksLbl);
 			this.Controls.Add(this.cClickScreen);
 			this.Controls.Add(this.cMainMenu);
+			this.Controls.Add(this.screenClickPanel);
 			this.MainMenuStrip = this.cMainMenu;
 			this.Name = "MainForm";
 			this.Opacity = 0.8D;
@@ -633,7 +624,6 @@
 		private System.Windows.Forms.Label estimatedRemaining;
 		private System.Windows.Forms.Label estimatedTime;
 		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.Panel testClickPanel;
 		private System.Windows.Forms.TextBox cIterationCount;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.TextBox cWaitMax;

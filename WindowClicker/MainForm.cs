@@ -38,6 +38,8 @@ namespace WindowClicker
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			cStatus.Text = string.Empty;
+			totalClicks.Text = "0";
+			cActionCount.Text = "0";
 		}
 
 		//----==== MENUS ====----------------------------------------------------------------------------
@@ -160,6 +162,7 @@ namespace WindowClicker
 			{
 				cActionList.Items.Add(action);
 
+				cUseActions.Checked = true;
 				cUseActions.Enabled = true;
 				saveToolStripMenuItem.Enabled = true;
 
@@ -266,7 +269,7 @@ namespace WindowClicker
 				}
 
 				cClickDetail.Text = $"{duration} / {clickDetail / clickTotal}";
-				cIterationClicksDetail.Text = $"{clicksMax} / {clicksMax / clickTotal}";
+				//cIterationClicksDetail.Text = $"{clicksMax} / {clicksMax / clickTotal}";
 
 				Application.DoEvents();
 
@@ -287,8 +290,6 @@ namespace WindowClicker
 		{
 			if (cActionList.SelectedIndex >= 0)
 			{
-				var action = ConstructAction();
-
 				// Delete the selected action.
 
 				var selectedIndex = cActionList.SelectedIndex;
@@ -449,7 +450,7 @@ namespace WindowClicker
 
 		private void ProcessAction(ProcessAction action, int iter, ref int clicksMax, ref int totClicks, ref int progressOffset)
 		{
-			var x = action.Location.X - action.ClickRadius;     // Shift by radius
+			var x = action.Location.X - action.ClickRadius;     // Shift by radius (more like a box versus a radius)
 			var y = action.Location.Y - action.ClickRadius;     // Shift by radius
 			var clickDetail = 0;
 			var diameter = action.ClickRadius * 2;
@@ -537,7 +538,7 @@ namespace WindowClicker
 				}
 			}
 
-			cIterationClicksDetail.Text = $"{clicksMax} / {clicksMax} / {clicksMax / totClicks}";
+			cIterationClicksDetail.Text = $"{clicksMax} / {clicksMax}";		// Signals the end.
 
 			progressOffset += clicksMax;
 		}
@@ -552,6 +553,12 @@ namespace WindowClicker
 		private void UpdateActionCount()
 		{
 			cActionCount.Text = cActionList.Items.Count.ToString();
+
+			if (cActionList.Items.Count == 0)
+			{
+				cUseActions.Checked = false;
+				cUseActions.Enabled = false;
+			}
 		}
 
 		private void WaitWhileHandlingEvents(long milliseconds)
@@ -576,8 +583,6 @@ namespace WindowClicker
 
 				milliseconds -= WAIT_DURATION;
 			}
-
-			//waiting.Text = string.Empty;
 		}
 
 	}
