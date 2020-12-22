@@ -82,7 +82,6 @@ namespace WindowClicker
 			Cursor.Position = new Point(clientPoint.X, clientPoint.Y);
 			//SetCursorPos(clientPoint.X, clientPoint.Y);
 
-
 			var inputMouseDown = new INPUT();
 			inputMouseDown.Type = (uint)SendInputEventType.InputMouse;
 			inputMouseDown.Data.Mouse.Flags = (uint)(MouseEventFlags.MOUSEEVENTF_LEFTDOWN);

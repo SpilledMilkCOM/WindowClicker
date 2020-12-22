@@ -17,6 +17,7 @@ namespace WindowClicker
 	{
 		private const int CONTROL_MARGIN = 5;
 		private const int MAX_DURATIONS_SAMPLE = 10;
+		private const string WITH_COMMAS_FORMAT = "N0";
 		private const string TIMESPAN_FORMAT = "hh\\:mm\\:ss";
 
 		private bool _isStarted;
@@ -82,7 +83,7 @@ namespace WindowClicker
 						}
 					}
 
-					UpdateActionCount();
+					UpdatedActionList();
 
 					DisplayStatus($"Loaded: {Path.GetFileName(cOpenFileDialog.FileName)}");
 				}
@@ -155,11 +156,7 @@ namespace WindowClicker
 			{
 				cActionList.Items.Add(action);
 
-				cUseActions.Checked = true;
-				cUseActions.Enabled = true;
-				saveToolStripMenuItem.Enabled = true;
-
-				UpdateActionCount();
+				UpdatedActionList();
 			}
 		}
 
@@ -283,7 +280,7 @@ namespace WindowClicker
 		{
 			if (cActionList.SelectedIndex >= 0)
 			{
-				// Delete the selected action.
+				// Delete the selected action from the Action List (UI)
 
 				var selectedIndex = cActionList.SelectedIndex;
 
@@ -299,9 +296,7 @@ namespace WindowClicker
 					cActionList.SelectedIndex = selectedIndex;
 				}
 
-				saveToolStripMenuItem.Enabled = true;
-
-				UpdateActionCount();
+				UpdatedActionList();
 			}
 		}
 
@@ -389,7 +384,7 @@ namespace WindowClicker
 					{
 						_minDuration = duration;
 
-						clickMin.Text = _minDuration.TotalMilliseconds.ToString("N0");
+						clickMin.Text = _minDuration.TotalMilliseconds.ToString(WITH_COMMAS_FORMAT);
 					}
 
 					if (_lastDurations.Count >= MAX_DURATIONS_SAMPLE)
@@ -399,11 +394,11 @@ namespace WindowClicker
 
 					_lastDurations.Add(duration);
 
-					clickMax.Text = _lastDurations.Max().TotalMilliseconds.ToString("N0");
+					clickMax.Text = _lastDurations.Max().TotalMilliseconds.ToString(WITH_COMMAS_FORMAT);
 					cClickDetail.Text = $"{duration.TotalMilliseconds:N0} / {_lastDurations.Average(item => item.TotalMilliseconds):N0}";
 				}
 
-				iterationClicksMin.Text = _testClicks.ToString("N0");
+				iterationClicksMin.Text = _testClicks.ToString(WITH_COMMAS_FORMAT);
 				iterationClicksMax.Text = iterationClicksMin.Text;
 
 				_testClicks++;
@@ -414,6 +409,10 @@ namespace WindowClicker
 
 		//----==== PRIVATE ====---------------------------------------------------------------------------
 
+		/// <summary>
+		/// Construct a ProcessAction from the UI.
+		/// </summary>
+		/// <returns>ProcessAction</returns>
 		private ProcessAction ConstructAction()
 		{
 			int x, y;
@@ -436,9 +435,14 @@ namespace WindowClicker
 			return result;
 		}
 
-		private void DisplayError(Exception ex, string caption)
+		/// <summary>
+		/// Display an exception and error to the user.
+		/// </summary>
+		/// <param name="ex">Exception</param>
+		/// <param name="message">Message to be displayed.</param>
+		private void DisplayError(Exception ex, string message)
 		{
-			MessageBox.Show(ex.Message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+			MessageBox.Show(ex.Message, message, MessageBoxButtons.OK, MessageBoxIcon.Error);
 		}
 
 		private void DisplayStatus(string status)
@@ -454,7 +458,6 @@ namespace WindowClicker
 			var diameter = action.ClickRadius * 2;
 			var iterClicksMin = action.ClicksRange.Min;
 			var iterClicksMax = action.ClicksRange.Max;
-			var duration = 0;
 			var iterMax = int.Parse(cIterationCount.Text);
 			var random = new Random();
 			var timeStarted = DateTime.Now;
@@ -494,7 +497,7 @@ namespace WindowClicker
 						ClickOnPointTool.VerticalWheel(Handle, new Point(x + action.ClickRadius, y + action.ClickRadius), 5);
 					}
 
-					duration = random.Next(action.ClickRange.Min, action.ClickRange.Max);
+					var duration = random.Next(action.ClickRange.Min, action.ClickRange.Max);
 
 					clickDetail += duration;
 					totClicks++;
@@ -548,7 +551,7 @@ namespace WindowClicker
 			rhs = temp;
 		}
 
-		private void UpdateActionCount()
+		private void UpdatedActionList()
 		{
 			cActionCount.Text = cActionList.Items.Count.ToString();
 
@@ -557,6 +560,8 @@ namespace WindowClicker
 			cUseActions.Checked = hasItems;
 			cUseActions.Enabled = hasItems;
 			cClickScreen.Enabled = hasItems;
+
+			saveToolStripMenuItem.Enabled = hasItems;
 		}
 
 		private void WaitWhileHandlingEvents(long milliseconds)
