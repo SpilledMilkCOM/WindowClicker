@@ -1,6 +1,6 @@
 # Window Clicker
 
-Addicted to those mindless [clicking games](https://www.crazygames.com/game/clicker-heroes)?
+Addicted to those mindless [clicking games](https://www.crazygames.com/game/clicker-heroes) as defined in [Wikipedia](https://en.wikipedia.org/wiki/Incremental_game)?
 
 FREE yourself with THIS mindless clicker app.
 
@@ -13,14 +13,19 @@ You could enter all of your settings and then ignore it for DAYS freeing up your
 
 I'm sure there are a few of these window clicking apps around to break these games.
 Why do we play these crazy games? 
-To beat our friends that are playing and be king of the mountain!
+To beat our friends for bragging rights!
 Although Mafia Wars was a team kind of thing.
 
-#### NOTE:
+## NOTE:
 You can't really do much on your computer while this is running, because the mouse is technically moving to that spot and then moving back.
-You can **try** and you may have some luck in the settings are adjusted correctly.
+You can **try** and you may have some luck if the settings are adjusted correctly.
 
-#### Instructions
+## Goals:
+
+* Use the `DataContractJsonSerializer` to minimize the use of external NuGet packages
+*(I prefer Newtownsoft, but this is just part of the exercise.)*
+
+## Instructions
 
 1. Compile and run the app.
 2. Drag the window over the area you want to click.

@@ -48,12 +48,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClickOnPointTool.cs" />
+    <Compile Include="Commands.cs" />
+    <Compile Include="Interfaces\ICommands.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IProcessAction.cs" />
+    <Compile Include="Interfaces\IRange.cs" />
     <Compile Include="Models\ProcessAction.cs" />
     <Compile Include="Models\Range.cs" />
     <Compile Include="Program.cs" />

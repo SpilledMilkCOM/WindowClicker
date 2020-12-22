@@ -1,9 +1,15 @@
-﻿namespace WindowClicker.Models
+﻿using System.Runtime.Serialization;
+using WindowClicker.Interfaces;
+
+namespace WindowClicker.Models
 {
-	public class Range
+	[DataContract]
+	public class Range : IRange
 	{
+		[DataMember]
 		public int Max { get; set; }
 
+		[DataMember]
 		public int Min { get; set; }
 
 		public override string ToString()

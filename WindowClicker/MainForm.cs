@@ -4,10 +4,11 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
-using System.Text;
 using System.Threading;
 using System.Windows.Forms;
+using WindowClicker.Interfaces;
 using WindowClicker.Models;
 
 namespace WindowClicker
@@ -25,6 +26,8 @@ namespace WindowClicker
 		private bool _skipAction;
 		private int _testClicks;
 
+		private ICommands _commands;
+
 		public MainForm()
 		{
 			InitializeComponent();
@@ -40,6 +43,16 @@ namespace WindowClicker
 			cStatus.Text = string.Empty;
 			totalClicks.Text = "0";
 			cActionCount.Text = "0";
+
+			// Eventually use an IoC Container (for now just using DI)
+
+			_commands = new Commands(typeof(List<IProcessAction>)
+					 , new DataContractJsonSerializerSettings
+					 {
+						 EmitTypeInformation = EmitTypeInformation.Never,                       // Type info is pretty noisy
+						 IgnoreExtensionDataObject = true,
+						 KnownTypes = new List<Type> { typeof(ProcessAction), typeof(Range) }
+					 }); ;
 		}
 
 		//----==== MENUS ====----------------------------------------------------------------------------
@@ -57,33 +70,22 @@ namespace WindowClicker
 
 				if (cOpenFileDialog.ShowDialog() == DialogResult.OK)
 				{
-					// Save JSON to file.
+					var actions = _commands.Load<List<ProcessAction>>(cOpenFileDialog.FileName);
 
-					var serializer = new DataContractJsonSerializer(typeof(List<ProcessAction>));
+					cActionList.Items.Clear();
 
-					using (var stream = File.OpenRead(cOpenFileDialog.FileName))
+					if (actions.Any())
 					{
-						var actions = serializer.ReadObject(stream) as List<ProcessAction>;
-
-						if (actions == null)
+						foreach (var item in actions)
 						{
-							actions = new List<ProcessAction>();
+							cActionList.Items.Add(item);
 						}
-						else
-						{
-							cActionList.Items.Clear();
-							actions.ForEach(item => cActionList.Items.Add(item));
-
-							cUseActions.Checked = true;
-							cUseActions.Enabled = true;
-							cClickScreen.Enabled = true;
-						}
-
-						UpdateActionCount();
 					}
-				}
 
-				cStatus.Text = $"Loaded: {Path.GetFileName(cOpenFileDialog.FileName)}";
+					UpdateActionCount();
+
+					DisplayStatus($"Loaded: {Path.GetFileName(cOpenFileDialog.FileName)}");
+				}
 			}
 			catch (Exception ex)
 			{
@@ -97,23 +99,14 @@ namespace WindowClicker
 
 			if (cSaveFileDialog.ShowDialog() == DialogResult.OK)
 			{
-				// Save JSON to file.
+				var actions = new List<IProcessAction>();
 
-				var serializer = new DataContractJsonSerializer(typeof(List<ProcessAction>));
-
-				// Use File Mode Create to wipe the contents of an existing file.
-
-				using (var fileStream = File.Open(cSaveFileDialog.FileName, FileMode.Create))
+				foreach (IProcessAction item in cActionList.Items)
 				{
-					var actions = new List<ProcessAction>();
-
-					foreach (ProcessAction item in cActionList.Items)
-					{
-						actions.Add(item);
-					}
-
-					serializer.WriteObject(fileStream, actions);
+					actions.Add(item);
 				}
+
+				_commands.Save(cSaveFileDialog.FileName, actions);		// Generic method type is inferred from the paramter.
 
 				cStatus.Text = $"Saved: {Path.GetFileName(cSaveFileDialog.FileName)}";
 			}
@@ -448,6 +441,11 @@ namespace WindowClicker
 			MessageBox.Show(ex.Message, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
 		}
 
+		private void DisplayStatus(string status)
+		{
+			cStatus.Text = status;
+		}
+
 		private void ProcessAction(ProcessAction action, int iter, ref int clicksMax, ref int totClicks, ref int progressOffset)
 		{
 			var x = action.Location.X - action.ClickRadius;     // Shift by radius (more like a box versus a radius)
@@ -538,7 +536,7 @@ namespace WindowClicker
 				}
 			}
 
-			cIterationClicksDetail.Text = $"{clicksMax} / {clicksMax}";		// Signals the end.
+			cIterationClicksDetail.Text = $"{clicksMax} / {clicksMax}";     // Signals the end.
 
 			progressOffset += clicksMax;
 		}
@@ -554,11 +552,11 @@ namespace WindowClicker
 		{
 			cActionCount.Text = cActionList.Items.Count.ToString();
 
-			if (cActionList.Items.Count == 0)
-			{
-				cUseActions.Checked = false;
-				cUseActions.Enabled = false;
-			}
+			var hasItems = cActionList.Items.Count > 0;
+
+			cUseActions.Checked = hasItems;
+			cUseActions.Enabled = hasItems;
+			cClickScreen.Enabled = hasItems;
 		}
 
 		private void WaitWhileHandlingEvents(long milliseconds)
