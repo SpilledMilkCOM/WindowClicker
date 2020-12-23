@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "README", "README", "{BCB6BF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowClicked", "WindowClicked\WindowClicked.csproj", "{49BC5B40-7401-4207-88F4-5BB77C924A8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowClicker.Test", "WindowClicker.Test\WindowClicker.Test.csproj", "{488C16C6-72C7-400C-802C-ABE0D4E6D4D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,10 @@ Global
 		{49BC5B40-7401-4207-88F4-5BB77C924A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49BC5B40-7401-4207-88F4-5BB77C924A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49BC5B40-7401-4207-88F4-5BB77C924A8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{488C16C6-72C7-400C-802C-ABE0D4E6D4D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{488C16C6-72C7-400C-802C-ABE0D4E6D4D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{488C16C6-72C7-400C-802C-ABE0D4E6D4D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{488C16C6-72C7-400C-802C-ABE0D4E6D4D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

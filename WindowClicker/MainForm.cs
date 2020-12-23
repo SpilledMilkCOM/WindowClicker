@@ -53,7 +53,7 @@ namespace WindowClicker
 						 EmitTypeInformation = EmitTypeInformation.Never,                       // Type info is pretty noisy
 						 IgnoreExtensionDataObject = true,
 						 KnownTypes = new List<Type> { typeof(ProcessAction), typeof(Range) }
-					 }); ;
+					 });
 		}
 
 		//----==== MENUS ====----------------------------------------------------------------------------
