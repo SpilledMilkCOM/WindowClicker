@@ -16,6 +16,8 @@ Why do we play these crazy games?
 To beat our friends for bragging rights!
 Although Mafia Wars was a team kind of thing.
 
+This **Minecraft** themed game is a good [tester game](https://www.crazygames.com/game/mineclicker).
+
 ## NOTE:
 You can't really do much on your computer while this is running, because the mouse is technically moving to that spot and then moving back.
 You can **try** and you may have some luck if the settings are adjusted correctly.
