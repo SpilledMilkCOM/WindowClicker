@@ -167,11 +167,11 @@ namespace WindowClicker
 				// Cancel out of process.
 
 				_isStarted = false;
-				cClickScreen.Text = "Click Screen";
+				cClickScreen.Text = "&Click Screen";
 				return;
 			}
 
-			cClickScreen.Text = "Cancel";
+			cClickScreen.Text = "&Cancel";
 			_isStarted = true;
 			_skipAction = false;
 
@@ -270,7 +270,7 @@ namespace WindowClicker
 
 			cProgressBar.Value = 0;      // Turn "off"
 			_isStarted = false;
-			cClickScreen.Text = "Click Screen";
+			cClickScreen.Text = "&Click Screen";
 
 			currentLabel.Visible = _isStarted;
 			currentIteration.Visible = _isStarted;
