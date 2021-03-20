@@ -126,8 +126,8 @@
 			this.cClickScreen.Location = new System.Drawing.Point(423, 304);
 			this.cClickScreen.Name = "cClickScreen";
 			this.cClickScreen.Size = new System.Drawing.Size(119, 27);
-			this.cClickScreen.TabIndex = 12;
-			this.cClickScreen.Text = "Click Screen";
+			this.cClickScreen.TabIndex = 14;
+			this.cClickScreen.Text = "&Click Screen";
 			this.cClickScreen.UseVisualStyleBackColor = true;
 			this.cClickScreen.Click += new System.EventHandler(this.cClickScreen_Click);
 			// 
@@ -145,7 +145,7 @@
 			this.iterationClicksMin.Location = new System.Drawing.Point(105, 92);
 			this.iterationClicksMin.Name = "iterationClicksMin";
 			this.iterationClicksMin.Size = new System.Drawing.Size(56, 20);
-			this.iterationClicksMin.TabIndex = 2;
+			this.iterationClicksMin.TabIndex = 3;
 			this.iterationClicksMin.Text = "250";
 			this.iterationClicksMin.Leave += new System.EventHandler(this.iterationClicksMin_Leave);
 			// 
@@ -154,7 +154,7 @@
 			this.iterationClicksMax.Location = new System.Drawing.Point(169, 92);
 			this.iterationClicksMax.Name = "iterationClicksMax";
 			this.iterationClicksMax.Size = new System.Drawing.Size(56, 20);
-			this.iterationClicksMax.TabIndex = 3;
+			this.iterationClicksMax.TabIndex = 4;
 			this.iterationClicksMax.Text = "300";
 			this.iterationClicksMax.Leave += new System.EventHandler(this.iterationClicksMin_Leave);
 			// 
@@ -172,7 +172,7 @@
 			this.cClickRadius.Location = new System.Drawing.Point(442, 153);
 			this.cClickRadius.Name = "cClickRadius";
 			this.cClickRadius.Size = new System.Drawing.Size(56, 20);
-			this.cClickRadius.TabIndex = 1;
+			this.cClickRadius.TabIndex = 7;
 			this.cClickRadius.Text = "10";
 			// 
 			// screenClickPanel
@@ -242,7 +242,7 @@
 			this.cIterationCount.Location = new System.Drawing.Point(71, 55);
 			this.cIterationCount.Name = "cIterationCount";
 			this.cIterationCount.Size = new System.Drawing.Size(56, 20);
-			this.cIterationCount.TabIndex = 33;
+			this.cIterationCount.TabIndex = 0;
 			this.cIterationCount.Text = "1";
 			// 
 			// label8
@@ -259,7 +259,7 @@
 			this.cWaitMax.Location = new System.Drawing.Point(279, 55);
 			this.cWaitMax.Name = "cWaitMax";
 			this.cWaitMax.Size = new System.Drawing.Size(56, 20);
-			this.cWaitMax.TabIndex = 37;
+			this.cWaitMax.TabIndex = 2;
 			this.cWaitMax.Text = "10000";
 			// 
 			// cWaitMin
@@ -267,7 +267,7 @@
 			this.cWaitMin.Location = new System.Drawing.Point(217, 55);
 			this.cWaitMin.Name = "cWaitMin";
 			this.cWaitMin.Size = new System.Drawing.Size(56, 20);
-			this.cWaitMin.TabIndex = 36;
+			this.cWaitMin.TabIndex = 1;
 			this.cWaitMin.Text = "5000";
 			// 
 			// label7
@@ -284,7 +284,7 @@
 			this.clickMax.Location = new System.Drawing.Point(169, 118);
 			this.clickMax.Name = "clickMax";
 			this.clickMax.Size = new System.Drawing.Size(56, 20);
-			this.clickMax.TabIndex = 35;
+			this.clickMax.TabIndex = 6;
 			this.clickMax.Text = "200";
 			// 
 			// clickMin
@@ -292,7 +292,7 @@
 			this.clickMin.Location = new System.Drawing.Point(105, 118);
 			this.clickMin.Name = "clickMin";
 			this.clickMin.Size = new System.Drawing.Size(56, 20);
-			this.clickMin.TabIndex = 34;
+			this.clickMin.TabIndex = 5;
 			this.clickMin.Text = "120";
 			// 
 			// label6
@@ -373,8 +373,8 @@
 			this.cAddAction.Location = new System.Drawing.Point(246, 194);
 			this.cAddAction.Name = "cAddAction";
 			this.cAddAction.Size = new System.Drawing.Size(53, 23);
-			this.cAddAction.TabIndex = 53;
-			this.cAddAction.Text = "Add";
+			this.cAddAction.TabIndex = 10;
+			this.cAddAction.Text = "&Add";
 			this.cAddAction.UseVisualStyleBackColor = true;
 			this.cAddAction.Click += new System.EventHandler(this.cAddAction_Click);
 			// 
@@ -384,7 +384,7 @@
 			this.cActionList.Location = new System.Drawing.Point(15, 223);
 			this.cActionList.Name = "cActionList";
 			this.cActionList.Size = new System.Drawing.Size(401, 108);
-			this.cActionList.TabIndex = 52;
+			this.cActionList.TabIndex = 9;
 			this.cActionList.SelectedIndexChanged += new System.EventHandler(this.cActionList_SelectedIndexChanged);
 			// 
 			// cUseActions
@@ -394,7 +394,7 @@
 			this.cUseActions.Location = new System.Drawing.Point(15, 194);
 			this.cUseActions.Name = "cUseActions";
 			this.cUseActions.Size = new System.Drawing.Size(83, 17);
-			this.cUseActions.TabIndex = 54;
+			this.cUseActions.TabIndex = 8;
 			this.cUseActions.Text = "Use Actions";
 			this.cUseActions.UseVisualStyleBackColor = true;
 			// 
@@ -404,8 +404,8 @@
 			this.cUpdateAction.Location = new System.Drawing.Point(305, 194);
 			this.cUpdateAction.Name = "cUpdateAction";
 			this.cUpdateAction.Size = new System.Drawing.Size(53, 23);
-			this.cUpdateAction.TabIndex = 55;
-			this.cUpdateAction.Text = "Update";
+			this.cUpdateAction.TabIndex = 11;
+			this.cUpdateAction.Text = "&Update";
 			this.cUpdateAction.UseVisualStyleBackColor = true;
 			this.cUpdateAction.Click += new System.EventHandler(this.cUpdateAction_Click);
 			// 
@@ -478,8 +478,8 @@
 			this.cDeleteAction.Location = new System.Drawing.Point(364, 194);
 			this.cDeleteAction.Name = "cDeleteAction";
 			this.cDeleteAction.Size = new System.Drawing.Size(53, 23);
-			this.cDeleteAction.TabIndex = 57;
-			this.cDeleteAction.Text = "Delete";
+			this.cDeleteAction.TabIndex = 12;
+			this.cDeleteAction.Text = "&Delete";
 			this.cDeleteAction.UseVisualStyleBackColor = true;
 			this.cDeleteAction.Click += new System.EventHandler(this.cDeleteAction_Click);
 			// 
@@ -497,8 +497,8 @@
 			this.cSkipAction.Location = new System.Drawing.Point(423, 223);
 			this.cSkipAction.Name = "cSkipAction";
 			this.cSkipAction.Size = new System.Drawing.Size(53, 23);
-			this.cSkipAction.TabIndex = 59;
-			this.cSkipAction.Text = "Skip >";
+			this.cSkipAction.TabIndex = 13;
+			this.cSkipAction.Text = "&Skip >";
 			this.cSkipAction.UseVisualStyleBackColor = true;
 			this.cSkipAction.Click += new System.EventHandler(this.cSkipAction_Click);
 			// 
@@ -516,7 +516,7 @@
 			// cStatus
 			// 
 			this.cStatus.Name = "cStatus";
-			this.cStatus.Size = new System.Drawing.Size(384, 17);
+			this.cStatus.Size = new System.Drawing.Size(393, 17);
 			this.cStatus.Spring = true;
 			this.cStatus.Text = "cStatus";
 			this.cStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
